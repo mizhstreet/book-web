@@ -7,6 +7,7 @@ import { Grid, makeStyles, Container, colors } from "@material-ui/core";
 import { purple } from "../constants/color";
 import { ReviewComment } from "../components/product/review-comment";
 import SidebarBook from "../components/home/sidebar/sidebar-book";
+import { ReviewForm } from "../components/product/review-form";
 
 const useStyles = makeStyles({
   productContainer: {
@@ -189,14 +190,11 @@ const product: React.FC = () => {
                 </div>
               </div>
               <p className={classes.productDescription}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                rerum id perspiciatis obcaecati, nihil tempore, repellat quos
-                nisi incidunt, magnam numquam debitis autem velit quasi harum
-                odio voluptatibus nostrum voluptas! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Quaerat rerum id perspiciatis
-                obcaecati, nihil tempore, repellat quos nisi incidunt, magnam
-                numquam debitis autem velit quasi harum odio voluptatibus
-                nostrum voluptas!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat rerum id perspiciatis obcaecati, nihil
+                tempore, repellat quos nisi incidunt, magnam numquam debitis autem velit quasi harum odio voluptatibus
+                nostrum voluptas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat rerum id perspiciatis
+                obcaecati, nihil tempore, repellat quos nisi incidunt, magnam numquam debitis autem velit quasi harum
+                odio voluptatibus nostrum voluptas!
               </p>
               <div className="btns">
                 <a className={classes.buyBtn} href="#">
@@ -214,28 +212,20 @@ const product: React.FC = () => {
             <div>
               <h3 className={classes.sectionTitle}>Overview</h3>
               <p className={classes.overview}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet
-                cum dolor, laudantium numquam earum fugiat. Placeat quo
-                doloribus quasi et, animi harum deserunt pariatur libero,
-                mollitia cumque assumenda provident ratione. Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. At doloremque voluptate
-                perferendis natus accusamus, voluptas qui rem similique minus
-                incidunt vitae nobis neque laboriosam sed nostrum optio
-                doloribus, quod ea. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Quaerat rerum id perspiciatis obcaecati, nihil
-                tempore, repellat quos nisi incidunt, magnam numquam debitis
-                autem velit quasi harum odio voluptatibus nostrum voluptas!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                rerum id perspiciatis obcaecati, nihil tempore, repellat quos
-                nisi incidunt, magnam numquam debitis autem velit quasi harum
-                odio voluptatibus nostrum voluptas! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Quaerat rerum id perspiciatis
-                obcaecati, nihil tempore, repellat quos nisi incidunt, magnam
-                numquam debitis autem velit quasi harum odio voluptatibus
-                nostrum voluptas! Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Quaerat rerum id perspiciatis obcaecati, nihil
-                tempore, repellat quos nisi incidunt, magnam numquam debitis
-                autem velit quasi harum odio voluptatibus nostrum voluptas!
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet cum dolor, laudantium numquam earum
+                fugiat. Placeat quo doloribus quasi et, animi harum deserunt pariatur libero, mollitia cumque assumenda
+                provident ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. At doloremque voluptate
+                perferendis natus accusamus, voluptas qui rem similique minus incidunt vitae nobis neque laboriosam sed
+                nostrum optio doloribus, quod ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat rerum
+                id perspiciatis obcaecati, nihil tempore, repellat quos nisi incidunt, magnam numquam debitis autem
+                velit quasi harum odio voluptatibus nostrum voluptas! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quaerat rerum id perspiciatis obcaecati, nihil tempore, repellat quos nisi incidunt, magnam
+                numquam debitis autem velit quasi harum odio voluptatibus nostrum voluptas! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quaerat rerum id perspiciatis obcaecati, nihil tempore, repellat quos nisi
+                incidunt, magnam numquam debitis autem velit quasi harum odio voluptatibus nostrum voluptas! Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Quaerat rerum id perspiciatis obcaecati, nihil tempore,
+                repellat quos nisi incidunt, magnam numquam debitis autem velit quasi harum odio voluptatibus nostrum
+                voluptas!
               </p>
             </div>
             <div className={classes.line}></div>
@@ -250,8 +240,7 @@ const product: React.FC = () => {
                     <span className={classes.subTitle}>Hardcover:</span> NA
                   </li>
                   <li>
-                    <span className={classes.subTitle}>Publisher:</span> NXB Kim
-                    dong
+                    <span className={classes.subTitle}>Publisher:</span> NXB Kim dong
                   </li>
                   <li>
                     <span className={classes.subTitle}>Language:</span> English
@@ -277,14 +266,10 @@ const product: React.FC = () => {
             <div>
               <div className={classes.reviewSectionHeadWrapper}>
                 <h3 className={classes.sectionTitle}>Customer review</h3>
-                <button className={classes.writeReviewBtn}>
-                  Write a review
-                </button>
+                <button className={classes.writeReviewBtn}>Write a review</button>
               </div>
               <div className={classes.reviewSubHeadWrapper}>
-                <p className={classes.avgRatingTitle}>
-                  Average Customer Rating
-                </p>
+                <p className={classes.avgRatingTitle}>Average Customer Rating</p>
                 <div>
                   <div className={classes.ratingContainer}>
                     <div>
@@ -299,18 +284,9 @@ const product: React.FC = () => {
                 </div>
               </div>
               <div>
-                <ReviewComment
-                  author={"min"}
-                  content={"aijsbduiasdboiasoifno"}
-                  createdAt={"2010/3/2"}
-                  image={"some"}
-                />
-                <ReviewComment
-                  author={"min"}
-                  content={"aijsbduiasdboiasoifno"}
-                  createdAt={"2010/3/2"}
-                  image={"some"}
-                />
+                <ReviewForm />
+                <ReviewComment author={"min"} content={"aijsbduiasdboiasoifno"} createdAt={"2010/3/2"} image={"some"} />
+                <ReviewComment author={"min"} content={"aijsbduiasdboiasoifno"} createdAt={"2010/3/2"} image={"some"} />
               </div>
               <div className={classes.line}></div>
             </div>
@@ -320,32 +296,16 @@ const product: React.FC = () => {
               <h3 className={classes.subSectionTitle}>BOOKS BY LUCY CREHAN</h3>
               <ul className={classes.sidebarBooksContainer}>
                 <li>
-                  <SidebarBook
-                    name="Batch and shit"
-                    author="Creig Stark"
-                    image={"some.jpg"}
-                  />
+                  <SidebarBook name="Batch and shit" author="Creig Stark" image={"some.jpg"} />
                 </li>
                 <li>
-                  <SidebarBook
-                    name="Batch and shit"
-                    author="Creig Stark"
-                    image={"some.jpg"}
-                  />
+                  <SidebarBook name="Batch and shit" author="Creig Stark" image={"some.jpg"} />
                 </li>
                 <li>
-                  <SidebarBook
-                    name="Batch and shit"
-                    author="Creig Stark"
-                    image={"some.jpg"}
-                  />
+                  <SidebarBook name="Batch and shit" author="Creig Stark" image={"some.jpg"} />
                 </li>
                 <li>
-                  <SidebarBook
-                    name="Batch and shit"
-                    author="Creig Stark"
-                    image={"some.jpg"}
-                  />
+                  <SidebarBook name="Batch and shit" author="Creig Stark" image={"some.jpg"} />
                 </li>
               </ul>
             </div>
