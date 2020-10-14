@@ -1,7 +1,10 @@
 import React from "react";
 import { Formik, Field, FieldProps, Form } from "formik";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import { Grid, makeStyles } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
+import { purple } from "../../constants/color";
+import { FormButton } from "./form-button";
 
 interface IFormValues {
   name: string;
@@ -19,12 +22,30 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
   inputField: {
-    fontSize: 40,
-    width: "100%",
+    padding: 10,
+  },
+  textAreaField: {
     padding: 0,
   },
-  inputNoPadding: {
-    padding: 0,
+  fieldLabel: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: 3,
+  },
+  fieldContainer: {
+    flexDirection: "column",
+    display: "flex",
+    marginTop: 13,
+  },
+  formContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  star: {
+    color: "#fdd835",
+  },
+  unratedStar: {
+    color: purple,
   },
 });
 
@@ -59,19 +80,52 @@ const ReviewForm: React.FC = () => {
           isSubmitting,
           /* and other goodies */
         }) => (
-          <Form onSubmit={handleSubmit}>
-            <Grid container>
-              <Grid item md={6}>
+          <Form className={classes.formContainer} onSubmit={handleSubmit}>
+            <Grid container direction="column">
+              <Grid container item>
+                <Grid className={classes.fieldContainer} item md={6} sm={12}>
+                  <label className={classes.fieldLabel}>Name</label>
+                  <Field
+                    component={TextField}
+                    inputProps={{ className: classes.inputField }}
+                    name="name"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid className={classes.fieldContainer} item md={6} sm={12}>
+                  <label className={classes.fieldLabel}>Email</label>
+                  <Field
+                    component={TextField}
+                    inputProps={{ className: classes.inputField }}
+                    name="email"
+                    variant="outlined"
+                  />
+                </Grid>
+              </Grid>
+              <Grid className={classes.fieldContainer} item>
+                <label className={classes.fieldLabel}>Your rating</label>
+                <div>
+                  <StarBorderIcon className={classes.unratedStar} />
+                  <StarBorderIcon className={classes.unratedStar} />
+                  <StarBorderIcon className={classes.unratedStar} />
+                  <StarBorderIcon className={classes.unratedStar} />
+                  <StarBorderIcon className={classes.unratedStar} />
+                </div>
+              </Grid>
+              <Grid className={classes.fieldContainer} item>
+                <label className={classes.fieldLabel}>Your review</label>
                 <Field
                   component={TextField}
-                  inputProps={{ className: classes.inputNoPadding }}
-                  className={classes.inputField}
-                  name="name"
+                  inputProps={{ className: classes.textAreaField }}
+                  type="email"
+                  multiline
+                  rows={5}
+                  name="review"
                   variant="outlined"
                 />
               </Grid>
-              <Grid item md={6}>
-                <Field component={TextField} className={classes.inputField} name="name" variant="outlined" />
+              <Grid>
+                <FormButton>Submit</FormButton>
               </Grid>
             </Grid>
           </Form>

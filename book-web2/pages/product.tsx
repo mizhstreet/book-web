@@ -8,6 +8,7 @@ import { purple } from "../constants/color";
 import { ReviewComment } from "../components/product/review-comment";
 import SidebarBook from "../components/home/sidebar/sidebar-book";
 import { ReviewForm } from "../components/product/review-form";
+import { FormButton } from "../components/product/form-button";
 
 const useStyles = makeStyles({
   productContainer: {
@@ -110,18 +111,6 @@ const useStyles = makeStyles({
     borderRadius: 15,
     marginRight: 10,
     backgroundColor: colors.yellow[900],
-  },
-  writeReviewBtn: {
-    paddingLeft: 40,
-    paddingRight: 40,
-    paddingTop: 15,
-    paddingBottom: 15,
-    color: "white",
-    border: "none",
-    backgroundColor: purple,
-    borderRadius: 7,
-    fontSize: 15,
-    fontWeight: "bold",
   },
   reviewSectionHeadWrapper: {
     display: "flex",
@@ -266,7 +255,7 @@ const product: React.FC = () => {
             <div>
               <div className={classes.reviewSectionHeadWrapper}>
                 <h3 className={classes.sectionTitle}>Customer review</h3>
-                <button className={classes.writeReviewBtn}>Write a review</button>
+                <FormButton>Write a review</FormButton>
               </div>
               <div className={classes.reviewSubHeadWrapper}>
                 <p className={classes.avgRatingTitle}>Average Customer Rating</p>
