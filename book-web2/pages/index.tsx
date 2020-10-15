@@ -43,66 +43,16 @@ const index: React.FC = () => {
         <Grid item={true} sm={12} lg={9} md={9} xs={12}>
           <h2 className={classes.sectionTitle}>Popular</h2>
           <Grid className={classes.listItemWrapper} container={true}>
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
           </Grid>
           <h2 className={classes.sectionTitle}>Categories</h2>
           <Grid className={classes.listItemWrapper} container={true}>
@@ -113,30 +63,10 @@ const index: React.FC = () => {
           </Grid>
           <h2 className={classes.sectionTitle}>Popular</h2>
           <Grid className={classes.listItemWrapper} container={true}>
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
-            <Book
-              name={"Boring Girls, A Novel"}
-              price={5.03}
-              orgPrice={8.99}
-              author={"Sara Taylor"}
-            />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
           </Grid>
         </Grid>
         <Newest />

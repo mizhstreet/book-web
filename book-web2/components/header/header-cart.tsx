@@ -5,32 +5,32 @@ import icon1 from "../../public/img/icon-1.png";
 import icon2 from "../../public/img/icon-2.png";
 import { grey, purple } from "../../constants/color";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   itemWrapper: {
     "& > img": {
-      marginRight: 10
-    }
+      marginRight: 10,
+    },
   },
   container: {
     [theme.breakpoints.down("sm")]: {
       display: "flex",
       justifyContent: "center",
-      marginBottom: 20
-    }
+      marginBottom: 20,
+    },
   },
   content: {
     "& > h5": {
       fontSize: 16,
       fontFamily: "averta-semibold",
       marginBottom: 1,
-      color: purple
+      color: purple,
     },
     "& > span": {
       fontFamily: "averta-semibold",
       fontSize: 12,
-      color: grey
+      color: grey,
     },
-    display: "inline-block"
+    display: "inline-block",
   },
   line: {
     display: "block",
@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
     borderLeft: "1px solid",
     width: 1,
     marginLeft: 20,
-    marginRight: 20
-  }
+    marginRight: 20,
+  },
 }));
 
 const HeaderCart: React.FC = () => {

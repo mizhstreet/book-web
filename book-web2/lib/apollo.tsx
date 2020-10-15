@@ -1,10 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import {
-  AppContextType,
-  NextComponentType,
-  AppInitialProps,
-} from "next/dist/next-server/lib/utils";
+import { AppContextType, NextComponentType, AppInitialProps } from "next/dist/next-server/lib/utils";
 import { ApolloClient } from "apollo-client";
 import { setContext } from "apollo-link-context";
 import { HttpLink } from "apollo-link-http";
@@ -15,15 +11,12 @@ import cookie from "cookie";
 import fetch from "isomorphic-unfetch";
 
 const getToken = (req?: IncomingMessage, options = {}) => {
-  const cookies = cookie.parse(
-    req?.headers?.cookie ?? document.cookie,
-    options
-  );
+  const cookies = cookie.parse(req?.headers?.cookie ?? document.cookie, options);
 
   return cookies.token;
 };
 
-type InitApolloClientOptions = [{}, { getToken: typeof getToken }];
+type InitApolloClientOptions = [unknown, { getToken: typeof getToken }];
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -69,16 +62,14 @@ const initApolloClient = (...args: InitApolloClientOptions) => {
   }
 
   if (!apolloClient) {
+    // @ts-ignore
     apolloClient = createApolloClient(...args);
   }
 
   return apolloClient;
 };
 
-export const withApollo = (
-  App: NextComponentType<AppContextType, AppInitialProps, any>,
-  { ssr = true } = {}
-) => {
+export const withApollo: any = (App: NextComponentType<AppContextType, AppInitialProps, any>, { ssr = true } = {}) => {
   const WithApollo = ({ apolloClient, apolloState, ...appProps }: any) => {
     const client = apolloClient || initApolloClient(apolloState, { getToken });
 
@@ -106,7 +97,7 @@ export const withApollo = (
       {},
       {
         getToken: () => getToken(req),
-      }
+      },
     ));
 
     const appProps = App.getInitialProps ? await App.getInitialProps(ctx) : {};
@@ -124,7 +115,7 @@ export const withApollo = (
           // @ts-ignore
           <ApolloProvider client={apolloClient}>
             <App {...appProps} Component={Component} router={router} />
-          </ApolloProvider>
+          </ApolloProvider>,
         );
       } catch (error) {
         // Prevent Apollo Client GraphQL errors from crashing SSR.

@@ -35,14 +35,14 @@ const useStyles = makeStyles({
   },
   createdAt: {
     color: grey,
-    paddingLeft: 70,
+    paddingLeft: 40,
   },
   star: {
     fontSize: 20,
     color: colors.yellow[800],
   },
 });
-const ReviewComment: React.FC<IProps> = () => {
+const ReviewComment: React.FC<IProps> = ({ author }) => {
   const classes = useStyles();
   return (
     <div>
@@ -50,7 +50,7 @@ const ReviewComment: React.FC<IProps> = () => {
         <img className={classes.avatar} src={lady} />
         <div className={classes.authorContainer}>
           <div className={classes.authorNameContainer}>
-            <p className={classes.authorName}>Kelly Clark</p>
+            <p className={classes.authorName}>{author}</p>
             <p className={classes.createdAt}>3 minutes ago</p>
           </div>
           <div>
@@ -64,17 +64,13 @@ const ReviewComment: React.FC<IProps> = () => {
       </div>
       <div>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe omnis
-          minima fuga laudantium facere quas atque, aliquid ab ipsum ad
-          doloremque culpa reprehenderit earum repellendus! Aperiam illum totam
-          expedita consequuntur! Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quod nesciunt mollitia, voluptatum assumenda ut cum
-          culpa perspiciatis! Accusantium, fugiat explicabo? Quasi maiores
-          libero totam facilis tempore ipsam doloribus natus iusto! Lorem ipsum,
-          dolor sit amet consectetur adipisicing elit. Assumenda blanditiis quam
-          similique, facilis totam veritatis eius corporis iusto, aspernatur
-          placeat nulla, voluptas officiis aliquam consectetur! Quia qui
-          expedita doloribus accusantium.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe omnis minima fuga laudantium facere quas
+          atque, aliquid ab ipsum ad doloremque culpa reprehenderit earum repellendus! Aperiam illum totam expedita
+          consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod nesciunt mollitia, voluptatum
+          assumenda ut cum culpa perspiciatis! Accusantium, fugiat explicabo? Quasi maiores libero totam facilis tempore
+          ipsam doloribus natus iusto! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda blanditiis
+          quam similique, facilis totam veritatis eius corporis iusto, aspernatur placeat nulla, voluptas officiis
+          aliquam consectetur! Quia qui expedita doloribus accusantium.
         </p>
       </div>
     </div>

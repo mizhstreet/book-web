@@ -2,6 +2,9 @@ import React from "react";
 import img from "../public/img/products/shattered.jpg";
 import authorimg from "../public/img/lady_author_3.jpg";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import ShareIcon from "@material-ui/icons/Share";
 import Page from "../components/page";
 import { Grid, makeStyles, Container, colors } from "@material-ui/core";
 import { purple } from "../constants/color";
@@ -10,18 +13,27 @@ import SidebarBook from "../components/home/sidebar/sidebar-book";
 import { ReviewForm } from "../components/product/review-form";
 import { FormButton } from "../components/product/form-button";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   productContainer: {
     backgroundColor: purple,
     paddingTop: 50,
     display: "block",
     minHeight: 500,
     marginBottom: 100,
+    [theme.breakpoints.down("xs")]: {
+      paddingBottom: 100,
+    },
+    [theme.breakpoints.down("sm")]: {
+      minHeight: 600,
+    },
   },
   imgContainer: {
     objectFit: "cover",
     border: "none",
     position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   productImg: {
     width: "80%",
@@ -30,11 +42,17 @@ const useStyles = makeStyles({
     borderRadius: 10,
     position: "absolute",
     top: 40,
+    [theme.breakpoints.down("sm")]: {
+      position: "relative",
+    },
   },
   authorContainer: {
     display: "flex",
     alignItems: "center",
     marginTop: 60,
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   authorImg: {
     maxWidth: "100%",
@@ -63,14 +81,14 @@ const useStyles = makeStyles({
     color: "#fdd835",
   },
   buyBtn: {
-    paddingTop: 10,
+    paddingTop: 12,
     paddingLeft: 40,
     paddingRight: 40,
-    paddingBottom: 10,
+    paddingBottom: 12,
     backgroundColor: "purple",
     borderRadius: 10,
     color: "white",
-    fontSize: 14,
+    fontSize: 16,
   },
   sectionTitle: {
     fontSize: 40,
@@ -116,6 +134,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
   },
   reviewSubHeadWrapper: {
     marginTop: 30,
@@ -147,7 +169,18 @@ const useStyles = makeStyles({
   sidebarBooksContainer: {
     marginTop: 20,
   },
-});
+  infoContainer: {
+    [theme.breakpoints.down("xs")]: {
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+  },
+  socialMediaIcon: {
+    fontSize: 40,
+    marginRight: 5,
+  },
+}));
 
 const product: React.FC = () => {
   const classes = useStyles();
@@ -156,12 +189,12 @@ const product: React.FC = () => {
       <div className={classes.productContainer}>
         <Container>
           <Grid container>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imgContainer}>
                 <img className={classes.productImg} src={img} alt="" />
               </div>
             </Grid>
-            <Grid item sm={12} md={8}>
+            <Grid className={classes.infoContainer} item xs={12} sm={6} md={8}>
               <div className={classes.authorContainer}>
                 <div className={classes.authorImgContainer}>
                   <img className={classes.authorImg} src={authorimg} alt="" />
@@ -295,6 +328,20 @@ const product: React.FC = () => {
                 </li>
                 <li>
                   <SidebarBook name="Batch and shit" author="Creig Stark" image={"some.jpg"} />
+                </li>
+              </ul>
+              <h3 className={classes.subSectionTitle}>Share this book</h3>
+              <ul>
+                <li>
+                  <a>
+                    <FacebookIcon className={classes.socialMediaIcon} />
+                  </a>
+                  <a>
+                    <TwitterIcon className={classes.socialMediaIcon} />
+                  </a>
+                  <a>
+                    <ShareIcon className={classes.socialMediaIcon} />
+                  </a>
                 </li>
               </ul>
             </div>

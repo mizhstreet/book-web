@@ -9,17 +9,28 @@ const useStyles = makeStyles({
     paddingTop: 15,
     paddingBottom: 15,
     color: "white",
-    border: "none",
+    border: "2px solid",
+    borderColor: purple,
     backgroundColor: purple,
     borderRadius: 7,
     fontSize: 15,
     fontWeight: "bold",
+    transition: ".3s",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "white",
+      color: purple,
+    },
   },
 });
 
-const FormButton: React.FC = ({ children }) => {
+const FormButton: React.FC<any> = ({ children, ...props }) => {
   const classes = useStyles();
-  return <button className={classes.writeReviewBtn}>{children}</button>;
+  return (
+    <button {...props} className={classes.writeReviewBtn}>
+      {children}
+    </button>
+  );
 };
 
 export { FormButton };

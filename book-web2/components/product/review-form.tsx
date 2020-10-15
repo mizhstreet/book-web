@@ -23,6 +23,7 @@ const useStyles = makeStyles({
   },
   inputField: {
     padding: 10,
+    width: "40%",
   },
   textAreaField: {
     padding: 0,
@@ -47,6 +48,10 @@ const useStyles = makeStyles({
   unratedStar: {
     color: purple,
   },
+  btnContainer: {
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
 });
 
 const ReviewForm: React.FC = () => {
@@ -63,11 +68,15 @@ const ReviewForm: React.FC = () => {
       <p>Your email address will not be published. Required fields are marked</p>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={async (values, { setSubmitting }) => {
+          console.log("something");
+          setSubmitting(true);
+          // await new Promise(() =>
+          //   setTimeout(() => {
+          //     alert("dit con memay");
+          //   }, 400),
+          // );
+          // setSubmitting(false);
         }}
       >
         {({
@@ -78,29 +87,28 @@ const ReviewForm: React.FC = () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
+          submitForm,
           /* and other goodies */
         }) => (
-          <Form className={classes.formContainer} onSubmit={handleSubmit}>
+          <Form className={classes.formContainer}>
             <Grid container direction="column">
-              <Grid container item>
-                <Grid className={classes.fieldContainer} item md={6} sm={12}>
-                  <label className={classes.fieldLabel}>Name</label>
-                  <Field
-                    component={TextField}
-                    inputProps={{ className: classes.inputField }}
-                    name="name"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid className={classes.fieldContainer} item md={6} sm={12}>
-                  <label className={classes.fieldLabel}>Email</label>
-                  <Field
-                    component={TextField}
-                    inputProps={{ className: classes.inputField }}
-                    name="email"
-                    variant="outlined"
-                  />
-                </Grid>
+              <Grid className={classes.fieldContainer} item md={6} sm={12}>
+                <label className={classes.fieldLabel}>Name</label>
+                <Field
+                  component={TextField}
+                  inputProps={{ className: classes.inputField }}
+                  name="name"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid className={classes.fieldContainer} item md={6} sm={12}>
+                <label className={classes.fieldLabel}>Email</label>
+                <Field
+                  component={TextField}
+                  inputProps={{ className: classes.inputField }}
+                  name="email"
+                  variant="outlined"
+                />
               </Grid>
               <Grid className={classes.fieldContainer} item>
                 <label className={classes.fieldLabel}>Your rating</label>
@@ -124,8 +132,10 @@ const ReviewForm: React.FC = () => {
                   variant="outlined"
                 />
               </Grid>
-              <Grid>
-                <FormButton>Submit</FormButton>
+              <Grid className={classes.btnContainer} container justify="center">
+                <FormButton disabled={isSubmitting} type="submit">
+                  Submit
+                </FormButton>
               </Grid>
             </Grid>
           </Form>

@@ -1,8 +1,8 @@
-import React from 'react';
-import Slider, { Settings } from 'react-slick';
-import { makeStyles } from '@material-ui/styles';
-import FeaturedItem from './featured/featured-item';
-import { grey } from '../../constants/color';
+import React from "react";
+import Slider, { Settings } from "react-slick";
+import { makeStyles } from "@material-ui/styles";
+import FeaturedItem from "./featured/featured-item";
+import { grey } from "../../constants/color";
 
 const sliderSettings: Settings = {
   autoplay: false,
@@ -11,7 +11,7 @@ const sliderSettings: Settings = {
   slidesToShow: 3,
   initialSlide: 0,
   dots: true,
-  centerPadding: '100px',
+  centerPadding: "100px",
   responsive: [
     {
       breakpoint: 766,
@@ -30,15 +30,15 @@ const sliderSettings: Settings = {
 
 const useStyles = makeStyles({
   title: {
-    fontFamily: 'averta-semibold',
+    fontFamily: "averta-semibold",
     fontSize: 17,
     color: grey,
     marginBottom: 23,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   container: {
     marginBottom: 25,
-    maxWidth: '100%',
+    maxWidth: "100%",
   },
 });
 const Featured: React.FC = () => {
@@ -48,34 +48,34 @@ const Featured: React.FC = () => {
       <p className={classes.title}>This week feature book</p>
       <Slider {...sliderSettings}>
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
         <FeaturedItem
-          name={'The Happy Lemon'}
-          author={'Kurt Yamashita'}
-          description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'}
+          name={"The Happy Lemon"}
+          author={"Kurt Yamashita"}
+          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
       </Slider>
     </div>
