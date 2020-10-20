@@ -15,45 +15,45 @@ const useStyles = makeStyles({
     paddingTop: 15,
     paddingLeft: 15,
     paddingRight: 15,
-    marginBottom: 25
+    marginBottom: 25,
   },
   img: {
     width: "100%",
     height: "auto",
-    borderRadius: 8
+    borderRadius: 8,
   },
   imgContainer: {
     flex: 1,
-    objectFit: "cover"
+    objectFit: "cover",
   },
   title: {
     "&:hover": {
-      textDecoration: "none"
+      textDecoration: "none",
     },
     fontSize: 18,
     fontFamily: "averta-bold",
     color: "black",
     marginTop: 10,
-    display: "block"
+    display: "block",
   },
   author: {
     color: grey,
     fontSize: 14,
     marginBottom: 7,
     marginTop: 7,
-    fontFamily: "averta-semibold"
+    fontFamily: "averta-semibold",
   },
   orgPrice: {
     textDecoration: "line-through",
     fontSize: 12,
     marginRight: 8,
-    color: purple
+    color: purple,
   },
   price: {
     fontSize: 16,
     color: purple,
-    fontFamily: "averta-bold"
-  }
+    fontFamily: "averta-bold",
+  },
 });
 const Book: React.FC<IProps> = ({ name, price, orgPrice, author }) => {
   const classes = useStyles();
