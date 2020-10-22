@@ -4,7 +4,7 @@ import Footer from "./footer";
 import Head from "next/head";
 
 interface IProps {
-  title: String;
+  title: string;
 }
 
 const Page: FC<IProps> = ({ children, title }) => {

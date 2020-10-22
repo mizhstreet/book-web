@@ -3,11 +3,12 @@ import { Grid } from "@material-ui/core";
 import Link from "next/link";
 import { makeStyles } from "@material-ui/styles";
 import lucy from "../../../public/img/bash_and_lucy-2.jpg";
+import lady from "../../../public/img/lady_author_3.jpg";
 import { purple } from "../../../constants/color";
 
 interface IProps {
   name: string;
-  author: string;
+  totalBooks: number;
 }
 const useStyles = makeStyles({
   container: {
@@ -15,60 +16,51 @@ const useStyles = makeStyles({
     paddingLeft: 30,
     paddingRight: 30,
     marginBottom: 25,
+    textAlign: "center",
   },
   img: {
-    width: "100%",
+    width: "75%",
     height: "auto",
-    borderRadius: 8,
+    borderRadius: "50%",
   },
   imgContainer: {
+    display: "flex",
     flex: 1,
-    objectFit: "cover",
+    justifyContent: "center",
   },
-  title: {
+  name: {
     "&:hover": {
       textDecoration: "none",
     },
     fontSize: 18,
     fontFamily: "averta-bold",
-    color: "#fff",
+    color: "black",
     marginTop: 10,
     display: "block",
   },
   author: {
-    color: "rgba(255, 255, 255, 0.48)",
+    color: purple,
     fontSize: 14,
     marginBottom: 7,
     marginTop: 7,
     fontFamily: "averta-semibold",
   },
-  orgPrice: {
-    textDecoration: "line-through",
-    fontSize: 12,
-    marginRight: 8,
-    color: purple,
-  },
-  price: {
-    fontSize: 16,
-    color: purple,
-    fontFamily: "averta-bold",
-  },
 });
 
-const NewestItem: React.FC<IProps> = ({ name, author }) => {
+const AuthorSliderItem: React.FC<IProps> = ({ name, totalBooks }) => {
   const classes = useStyles();
   return (
     <Grid container>
       <div className={classes.container}>
         <div className={classes.imgContainer}>
-          <img className={classes.img} src={lucy} alt={"lucy"} />
+          <img className={classes.img} src={lady} alt={"lucy"} />
         </div>
         <Link href="#">
-          <a className={classes.title}>{name}</a>
+          <a className={classes.name}>{name}</a>
         </Link>
-        <p className={classes.author}>by: {author}</p>
+        <p className={classes.author}>{totalBooks} books</p>
       </div>
     </Grid>
   );
 };
-export default NewestItem;
+export default AuthorSliderItem;

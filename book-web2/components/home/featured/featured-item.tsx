@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     marginLeft: 5,
     marginRight: 5,
     position: "relative",
-    zIndex: 1
+    zIndex: 1,
   },
   overlay: {
     width: "100%",
@@ -30,55 +30,55 @@ const useStyles = makeStyles({
     borderRadius: 15,
     top: 0,
     left: 0,
-    background: "rgba(0, 0, 0, 0.5)"
+    background: "rgba(0, 0, 0, 0.5)",
   },
   author: {
-    color: "white"
+    color: "white",
   },
   title: {
     "&:hover": {
       color: purple,
-      textDecoration: "none"
+      textDecoration: "none",
     },
     color: "white",
     fontFamily: "averta-bold",
     fontSize: 18,
     display: "block",
-    marginBottom: 10
+    marginBottom: 10,
   },
   contentContainer: {
     flex: 1,
-    display: "flex"
+    display: "flex",
   },
   contentInfo: {
-    width: "70%"
+    width: "70%",
   },
   ratings: {
     marginTop: 10,
     display: "flex",
     alignItems: "center",
     marginBottom: 18,
-    color: "white"
+    color: "white",
   },
   ratingsCount: {
     color: "white",
     fontSize: 12,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
   description: {
     lineHeight: "20px",
     color: "white",
-    marginBottom: 35
+    marginBottom: 35,
   },
   imgContainer: {
-    width: "30%"
+    width: "30%",
   },
   image: {
-    maxWidth: "100%"
+    maxWidth: "100%",
   },
   viewShop: {
     "&:hover": {
-      textDecoration: "none"
+      textDecoration: "none",
     },
     width: "fit-content",
     fontFamily: "averta-bold",
@@ -88,18 +88,18 @@ const useStyles = makeStyles({
     color: "black",
     display: "block",
     backgroundColor: "white",
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });
 
 const FeaturedItem: React.FC<IProps> = ({ name, author, description }) => {
   const classes = useStyles();
   return (
     <Palette src={lucy}>
-      {palette => (
+      {(palette) => (
         <div
           style={{
-            background: palette.data.vibrant
+            background: palette.data.vibrant,
           }}
           className={classes.container}
         >

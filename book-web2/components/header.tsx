@@ -8,28 +8,26 @@ import SearchBar from "./header/searchbar";
 
 const useStyles = makeStyles({
   container: {
-    marginTop: 40
-  }
+    marginTop: 40,
+  },
 });
 
-const Header = () => {
+const Header: React.FC = () => {
   const classes = useStyles();
   return (
-    <>
-      <Container className={classes.container}>
-        <Grid container>
-          <HeaderLinks />
-          <HeaderCart />
-        </Grid>
-        <Grid container={true}>
-          <Logo />
-          <SearchBar />
-        </Grid>
-        <Grid container>
-          <Navbar />
-        </Grid>
-      </Container>
-    </>
+    <Container className={classes.container}>
+      <Grid container>
+        <HeaderLinks />
+        <HeaderCart />
+      </Grid>
+      <Grid container={true}>
+        <Logo />
+        <SearchBar />
+      </Grid>
+      <Grid container>
+        <Navbar />
+      </Grid>
+    </Container>
   );
 };
 

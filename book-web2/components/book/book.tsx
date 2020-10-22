@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import Link from "next/link";
-import { makeStyles } from "@material-ui/styles";
 import lucy from "../../public/img/products/bash_and_lucy-2.jpg";
 import { grey, purple } from "../../constants/color";
 interface IProps {
@@ -10,12 +9,15 @@ interface IProps {
   orgPrice?: number;
   price: number;
 }
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: 15,
     paddingLeft: 15,
     paddingRight: 15,
     marginBottom: 25,
+    [theme.breakpoints.down("xs")]: {
+      padding: 4,
+    },
   },
   img: {
     width: "100%",
@@ -54,11 +56,11 @@ const useStyles = makeStyles({
     color: purple,
     fontFamily: "averta-bold",
   },
-});
+}));
 const Book: React.FC<IProps> = ({ name, price, orgPrice, author }) => {
   const classes = useStyles();
   return (
-    <Grid item={true} lg={3} xs={12} sm={6} md={4}>
+    <Grid item={true} lg={3} xs={6} sm={6} md={4}>
       <div className={classes.container}>
         <div className={classes.imgContainer}>
           <img className={classes.img} src={lucy} alt={"lucy"} />

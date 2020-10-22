@@ -11,53 +11,53 @@ import FooterBook from "./footer/footer-book";
 const useStyles = makeStyles({
   container: {
     paddingTop: 60,
-    paddingBottom: 25
+    paddingBottom: 25,
   },
   logoImg: {
     marginBottom: 20,
-    maxWidth: "100%"
+    maxWidth: "100%",
   },
   title: {
     fontFamily: "averta-bold",
     fontSize: 20,
-    marginBottom: 16
+    marginBottom: 16,
   },
   logoText: {
     fontFamily: "averta-light",
     letterSpacing: 1,
     fontSize: 14,
     lineHeight: "22px",
-    marginBottom: 20
+    marginBottom: 20,
   },
   socialWrap: {
     "& > a": {
       "&:first-child": {
-        paddingLeft: 0
+        paddingLeft: 0,
       },
-      paddingLeft: 20
+      paddingLeft: 20,
     },
     display: "flex",
-    flex: 1
+    flex: 1,
   },
   listItem: {
     "& > a": {
       "&:hover": {
         textDecoration: "none",
-        color: purple
+        color: purple,
       },
       transition: "all .3s",
-      color: grey
+      color: grey,
     },
     fontSize: 16,
     color: grey,
     fontFamily: "averta-bold",
-    lineHeight: "35px"
-  }
+    lineHeight: "35px",
+  },
 });
 
 const listGenres: string[] = ["Action", "Comedy", "Drama", "E-books", "Horror", "Kids"];
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const classes = useStyles();
   return (
     <footer>

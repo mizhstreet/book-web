@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { makeStyles, Grid, Container } from '@material-ui/core';
-import { purple } from '../../constants/color';
-import Slider, { Settings } from 'react-slick';
-import NewestItem from './newest/newest-item';
+import * as React from "react";
+import { makeStyles, Grid, Container } from "@material-ui/core";
+import { purple } from "../../constants/color";
+import Slider, { Settings } from "react-slick";
+import NewestItem from "./newest/newest-item";
 
 const sliderSettings: Settings = {
   autoplay: false,
@@ -11,7 +11,7 @@ const sliderSettings: Settings = {
   slidesToShow: 4,
   initialSlide: 0,
   arrows: false,
-  centerPadding: '100px',
+  centerPadding: "100px",
   responsive: [
     {
       breakpoint: 766,
@@ -36,25 +36,25 @@ const useStyles = makeStyles({
     borderRadius: 20,
   },
   title1: {
-    fontFamily: 'averta-semibold',
+    fontFamily: "averta-semibold",
     fontSize: 18,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 14,
   },
   title2: {
-    fontFamily: 'averta-bold',
+    fontFamily: "averta-bold",
     fontSize: 24,
     marginBottom: 35,
-    color: '#fff',
+    color: "#fff",
   },
   title3: {
     fontSize: 15,
     marginBottom: 35,
-    color: '#fff',
+    color: "#fff",
   },
 });
 
-const Newest = () => {
+const Newest: React.FC = () => {
   const classes = useStyles();
   return (
     <Grid container className={classes.container}>

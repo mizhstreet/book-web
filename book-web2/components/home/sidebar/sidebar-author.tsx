@@ -13,31 +13,31 @@ const useStyles = makeStyles({
     flex: 1,
     display: "flex",
     marginBottom: 20,
-    alignItems: "center"
+    alignItems: "center",
   },
   imgContainer: {
     maxWidth: 40,
-    marginRight: 15
+    marginRight: 15,
   },
   img: {
     maxWidth: "100%",
-    borderRadius: 20
+    borderRadius: 20,
   },
   name: {
     "&:hover": {
       color: purple,
-      textDecoration: "none"
+      textDecoration: "none",
     },
     fontSize: 16,
     fontFamily: "averta-bold",
     color: "black",
-    transition: "all .5s"
+    transition: "all .5s",
   },
   bookCount: {
     fontSize: 12,
     color: grey,
-    marginTop: 6
-  }
+    marginTop: 6,
+  },
 });
 const SidebarAuthor: React.FC<IProps> = ({ name, bookCount }) => {
   const classes = useStyles();
