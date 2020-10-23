@@ -13,34 +13,34 @@ const useStyles = makeStyles({
   book: {
     flex: 1,
     display: "flex",
-    marginBottom: 15
+    marginBottom: 15,
   },
   img: {
     maxWidth: "55px",
     objectFit: "contain",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   content: {
     flex: 1,
-    paddingLeft: 15
+    paddingLeft: 15,
   },
   name: {
     "&:hover": {
       textDecoration: "none",
-      color: purple
+      color: purple,
     },
     fontFamily: "averta-bold",
     fontSize: 18,
     color: "black",
-    transition: "all .5s"
+    transition: "all .5s",
   },
   author: {
     color: grey,
     fontFamily: "averta-semibold",
     fontSize: 14,
     marginTop: 10,
-    marginBottom: 15
-  }
+    marginBottom: 15,
+  },
 });
 
 const FooterBook: React.FC<IProps> = ({ name, author }) => {

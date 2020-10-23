@@ -1,128 +1,57 @@
 import React from "react";
-import lady from "../public/img/lady_author_3.jpg";
 import Page from "../components/page";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import EmailIcon from "@material-ui/icons/Email";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import { Container, Grid, makeStyles } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Grid,
+  makeStyles,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+import boring from "../public/img/products/boring_girls_a_novel.jpg";
 import { purple } from "../constants/color";
 import Book from "../components/book/book";
 import AuthorSlider from "../components/author-profile/author-slider";
+import { PageBannerTitle } from "../components/page-banner-title";
 
 const useStyles = makeStyles((theme) => ({
-  authorBackground: {
-    minHeight: 250,
-    width: "100%",
-    backgroundColor: purple,
-    display: "block",
+  img: {
+    maxWidth: 60,
   },
-  authorContainer: {
+  removeBtn: {
+    minWidth: 0,
+    width: 30,
+    height: 30,
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingBottom: 100,
-  },
-  authorName: {
-    fontSize: 30,
+    borderRadius: "50%",
     fontWeight: "bold",
-    paddingTop: 20,
+  },
+  summaryContainer: {
+    backgroundColor: "rgb(243, 242, 245)",
+    padding: 10,
+  },
+  summaryHeadline: {
+    fontSize: 16,
     paddingBottom: 20,
   },
-  authorShareText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    paddingTop: 40,
-    paddingBottom: 25,
-    textAlign: "center",
-    textTransform: "uppercase",
-    color: "#888a92",
+  table: {
+    marginTop: 100,
   },
-  authorQuote: {
-    textAlign: "center",
-    fontStyle: "italic",
-    fontSize: 17,
-    fontWeight: 400,
-    paddingLeft: 20,
-    paddingRight: 20,
-    maxWidth: 800,
-  },
-  avatar: {
-    display: "block",
-    maxWidth: 120,
-    marginTop: -75,
-  },
-  avatarImg: {
-    width: "100%",
-    borderRadius: 75,
-  },
-  filterItem: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#888a92",
-    marginRight: 20,
-    paddingBottom: 15,
-    cursor: "pointer",
-    transition: ".6s",
-    "&:hover": {
-      color: purple,
-    },
-    "&$filterItemActive": {
-      borderBottom: "4px solid",
-      borderBottomColor: purple,
-    },
-  },
-  filterItemActive: {},
-  filterList: {
-    display: "flex",
-    marginLeft: 15,
-    overflow: "scroll",
-    marginBottom: 20,
-    "&::-webkit-scrollbar": {
-      width: 0,
-      background: "transparent",
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
-    },
-  },
-  line: {
-    borderBottom: "1px solid #e5e6ea",
-    display: "block",
-    marginBottom: 20,
-    marginTop: 20,
-  },
-  showMoreBtn: {
-    display: "block",
-    paddingLeft: 40,
-    paddingRight: 40,
-    paddingTop: 15,
-    paddingBottom: 15,
-    color: purple,
-    border: "2px solid",
-    borderColor: purple,
-    backgroundColor: "white",
-    borderRadius: 7,
+  tableCell: {
     fontSize: 15,
     fontWeight: "bold",
-    transition: ".3s",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: purple,
-      color: "white",
-    },
+    color: "#5c4a9e",
   },
-  socialMedia: {
-    color: purple,
-    fontSize: 40,
-  },
-  socialMediaItem: {
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  socialMediaList: {
-    display: "flex",
-    justifyContent: "center",
+  tableHead: {
+    fontSize: 18,
+    fontWeight: "bold",
+    borderBottom: "3px solid",
+    borderBottomColor: purple,
   },
 }));
 
@@ -130,65 +59,88 @@ const AuthorProfile: React.FC = () => {
   const classes = useStyles();
   return (
     <Page title="Lucy Crehan">
-      <div className={classes.authorContainer}>
-        <div className={classes.authorBackground}></div>
-        <div className={classes.avatar}>
-          <img className={classes.avatarImg} src={lady} alt="" />
-        </div>
-        <h3 className={classes.authorName}>Lucy Crehan</h3>
-        <p className={classes.authorQuote}>
-          "I'll cross my heart and hope to die and we're always and forever I'll be by your side I'll cross my heart and
-          hope to die and we're always and forever I'll be by your side I'll cross my heart and hope to die and we're
-          always and forever I'll be by your side"
-        </p>
-        <div>
-          <p className={classes.authorShareText}>Share this author</p>
-          <ul className={classes.socialMediaList}>
-            <li className={classes.socialMediaItem}>
-              <FacebookIcon className={classes.socialMedia} />
-            </li>
-            <li className={classes.socialMediaItem}>
-              <InstagramIcon className={classes.socialMedia} />
-            </li>
-            <li className={classes.socialMediaItem}>
-              <TwitterIcon className={classes.socialMedia} />
-            </li>
-            <li className={classes.socialMediaItem}>
-              <EmailIcon className={classes.socialMedia} />
-            </li>
-          </ul>
-        </div>
-      </div>
+      <PageBannerTitle title="Cart" />
       <Container>
-        <ul className={classes.filterList}>
-          <li className={`${classes.filterItem} ${classes.filterItemActive}`}>
-            <p>Lastest Publication</p>
-          </li>
-          <li className={classes.filterItem}>
-            <p>Best Seller</p>
-          </li>
-          <li className={classes.filterItem}>
-            <p>Featured</p>
-          </li>
-        </ul>
-        <Grid container>
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-        </Grid>
         <Grid container justify="center">
-          <button className={classes.showMoreBtn}>Show more</button>
+          <TableContainer>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell className={classes.tableHead} align="center" colSpan={3}>
+                    Product
+                  </TableCell>
+                  <TableCell className={classes.tableHead}>Price</TableCell>
+                  <TableCell className={classes.tableHead}>Quantity</TableCell>
+                  <TableCell className={classes.tableHead}>Subtotal</TableCell>
+                </TableRow>
+              </TableHead>
+              {/* <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.carbs}</TableCell>
+                <TableCell align="right">{row.protein}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody> */}
+              <TableBody>
+                <TableRow>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 30 }}>
+                    <Button className={classes.removeBtn} variant="contained" color="primary">
+                      X
+                    </Button>
+                  </TableCell>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 70 }}>
+                    <img src={boring} alt="asdn" className={classes.img} />
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>Boring Girl, A novel</TableCell>
+                  <TableCell className={classes.tableCell}>¥3500</TableCell>
+                  <TableCell className={classes.tableCell}>4</TableCell>
+                  <TableCell className={classes.tableCell}>¥10000</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 30 }}>
+                    <Button className={classes.removeBtn} variant="contained" color="primary">
+                      X
+                    </Button>
+                  </TableCell>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 70 }}>
+                    <img src={boring} alt="asdn" className={classes.img} />
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>Boring Girl, A novel</TableCell>
+                  <TableCell className={classes.tableCell}>¥3500</TableCell>
+                  <TableCell className={classes.tableCell}>4</TableCell>
+                  <TableCell className={classes.tableCell}>¥10000</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 30 }}>
+                    <Button className={classes.removeBtn} variant="contained" color="primary">
+                      X
+                    </Button>
+                  </TableCell>
+                  <TableCell className={classes.tableCell} style={{ minWidth: 70 }}>
+                    <img src={boring} alt="asdn" className={classes.img} />
+                  </TableCell>
+                  <TableCell className={classes.tableCell}>Boring Girl, A novel</TableCell>
+                  <TableCell className={classes.tableCell}>¥3500</TableCell>
+                  <TableCell className={classes.tableCell}>4</TableCell>
+                  <TableCell className={classes.tableCell}>¥10000</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
-        <AuthorSlider />
+        <Grid container>
+          <Grid item md={4} sm={6} xs={12}>
+            <Paper elevation={4}>
+              <h3>Cart Totals</h3>
+            </Paper>
+          </Grid>
+        </Grid>
       </Container>
     </Page>
   );
