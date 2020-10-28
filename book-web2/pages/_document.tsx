@@ -1,5 +1,6 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
+import CleanCSS from "clean-css";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 
 export default class MyDocument extends Document {
@@ -35,6 +36,16 @@ MyDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+    // styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+    styles: (
+      <>
+        {initialProps.styles}
+        <style
+          id="jss-server-side"
+          key="jss-server-side"
+          dangerouslySetInnerHTML={{ __html: new CleanCSS({}).minify(sheets.toString()).styles }}
+        />
+      </>
+    ),
   };
 };

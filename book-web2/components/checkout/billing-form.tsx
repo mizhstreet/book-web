@@ -1,8 +1,7 @@
 import React from "react";
 import { Formik, Field, FieldProps, Form } from "formik";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import { Divider, Grid, makeStyles, Paper } from "@material-ui/core";
-import { TextField } from "formik-material-ui";
+import { Divider, FormControl, Grid, makeStyles, MenuItem, Paper, Typography } from "@material-ui/core";
+import { TextField, Select } from "formik-material-ui";
 import { purple } from "../../constants/color";
 // import { FormButton } from "./form-button";
 
@@ -11,14 +10,10 @@ interface IFormValues {
   email: string;
   rating: number;
   review: string;
+  prefecture: string;
 }
 
 const useStyles = makeStyles({
-  container: {},
-  formTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
   formHeadline: {
     paddingBottom: 20,
     paddingLeft: 30,
@@ -28,20 +23,17 @@ const useStyles = makeStyles({
     color: purple,
   },
   inputField: {
-    padding: 10,
-  },
-  textAreaField: {
-    padding: 0,
+    padding: 5,
+    paddingLeft: 0,
+    paddingTop: 0,
   },
   fieldLabel: {
     fontWeight: "bold",
     fontSize: 16,
-    marginBottom: 3,
+    paddingBottom: 5,
   },
   fieldContainer: {
-    flexDirection: "column",
-    display: "flex",
-    marginTop: 13,
+    marginBottom: 25,
   },
   formContainer: {
     paddingTop: 10,
@@ -49,21 +41,18 @@ const useStyles = makeStyles({
     paddingLeft: 30,
     paddingRight: 30,
   },
-  star: {
-    color: "#fdd835",
-  },
-  unratedStar: {
-    color: purple,
-  },
   btnContainer: {
     paddingTop: 20,
     paddingBottom: 20,
   },
-  underLine: {
-    color: "red",
-    "&::after": {
-      border: "2px solid red",
+  underline: {
+    "&:before": {
+      borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
     },
+  },
+  select: {
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });
 
@@ -73,89 +62,113 @@ const BillingForm: React.FC = () => {
     email: "",
     rating: 0,
     review: "",
+    prefecture: "",
   };
   const classes = useStyles();
   return (
     <Paper elevation={6}>
-      <div className={classes.container}>
-        <h3 className={classes.formHeadline}>Billing details</h3>
-        <Divider />
-        <Formik
-          initialValues={initialValues}
-          onSubmit={async (values, { setSubmitting }) => {
-            console.log("something");
-            setSubmitting(true);
-            // await new Promise(() =>
-            //   setTimeout(() => {
-            //     alert("dit con memay");
-            //   }, 400),
-            // );
-            // setSubmitting(false);
-          }}
-        >
-          {({
-            values,
-            // errors,
-            // touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            submitForm,
-            /* and other goodies */
-          }) => (
-            <Form className={classes.formContainer}>
-              <Grid container direction="column">
+      <Typography className={classes.formHeadline} component={"h3"}>
+        Billing details
+      </Typography>
+      <Divider />
+      <Formik
+        initialValues={initialValues}
+        onSubmit={async (values, { setSubmitting }) => {
+          console.log("something");
+          setSubmitting(true);
+        }}
+      >
+        {({
+          values,
+          // errors,
+          // touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          submitForm,
+          /* and other goodies */
+        }) => (
+          <Form className={classes.formContainer}>
+            <Grid container direction="column">
+              <FormControl className={classes.fieldContainer}>
                 <label className={classes.fieldLabel}>Name</label>
                 <Field
                   component={TextField}
                   fullWidth={true}
                   inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underLine } }}
+                  InputProps={{ classes: { underline: classes.underline } }}
                   name="name"
                 />
-                <Grid className={classes.fieldContainer} item md={6} sm={12}>
-                  <label className={classes.fieldLabel}>Email</label>
-                  <Field
-                    component={TextField}
-                    fullWidth
-                    inputProps={{ className: classes.inputField }}
-                    name="email"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid className={classes.fieldContainer} item>
-                  <label className={classes.fieldLabel}>Your rating</label>
-                  <div>
-                    <StarBorderIcon className={classes.unratedStar} />
-                    <StarBorderIcon className={classes.unratedStar} />
-                    <StarBorderIcon className={classes.unratedStar} />
-                    <StarBorderIcon className={classes.unratedStar} />
-                    <StarBorderIcon className={classes.unratedStar} />
-                  </div>
-                </Grid>
-                <Grid className={classes.fieldContainer} item>
-                  <label className={classes.fieldLabel}>Your review</label>
-                  <Field
-                    component={TextField}
-                    inputProps={{ className: classes.textAreaField }}
-                    type="email"
-                    multiline
-                    rows={5}
-                    name="review"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid className={classes.btnContainer} container justify="center">
-                  {/* <FormButton disabled={isSubmitting} type="submit">
-                  Submit
-                </FormButton> */}
-                </Grid>
-              </Grid>
-            </Form>
-          )}
-        </Formik>
-      </div>
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Company Name (optional)</label>
+                <Field
+                  component={TextField}
+                  fullWidth={true}
+                  inputProps={{ className: classes.inputField }}
+                  InputProps={{ classes: { underline: classes.underline } }}
+                  name="name"
+                />
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Prefectural</label>
+                <Field
+                  classes={{ root: classes.select }}
+                  component={Select}
+                  variant="outlined"
+                  name="prefecture"
+                  value="Hokkaido"
+                >
+                  <MenuItem value={"Hokkaido"}>Hokkaido</MenuItem>
+                  <MenuItem value={"Tokyo"}>Tokyo</MenuItem>
+                  <MenuItem value={"Osaka"}>Osaka</MenuItem>
+                </Field>
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Street address</label>
+                <Field
+                  component={TextField}
+                  fullWidth={true}
+                  inputProps={{ className: classes.inputField }}
+                  InputProps={{ classes: { underline: classes.underline } }}
+                  name="name"
+                />
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Postcode</label>
+                <Field
+                  component={TextField}
+                  fullWidth={true}
+                  inputProps={{ className: classes.inputField }}
+                  InputProps={{ classes: { underline: classes.underline } }}
+                  name="name"
+                />
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Town / City</label>
+                <Field
+                  component={TextField}
+                  fullWidth={true}
+                  inputProps={{ className: classes.inputField }}
+                  InputProps={{ classes: { underline: classes.underline } }}
+                  name="name"
+                />
+              </FormControl>
+              <FormControl className={classes.fieldContainer}>
+                <label className={classes.fieldLabel}>Email address</label>
+                <Field
+                  component={TextField}
+                  fullWidth={true}
+                  inputProps={{ className: classes.inputField }}
+                  InputProps={{ classes: { underline: classes.underline } }}
+                  name="name"
+                />
+              </FormControl>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
     </Paper>
   );
 };
