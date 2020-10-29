@@ -47,7 +47,7 @@ const SidebarAuthor: React.FC<IProps> = ({ name, bookCount }) => {
         <img className={classes.img} alt={"author"} src={lady} />
       </div>
       <div>
-        <Link href="#">
+        <Link href="/author-profile">
           <a className={classes.name}>{name}</a>
         </Link>
         <p className={classes.bookCount}>{bookCount} Book</p>

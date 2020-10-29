@@ -57,8 +57,10 @@ const HeaderCart: React.FC = () => {
       <div className={classes.itemWrapper}>
         <img alt={"some"} src={icon2} />
         <div className={classes.content}>
-          <h5>Cart</h5>
-          <span>0</span>
+          <a href="/cart">
+            <h5>Cart</h5>
+            <span>0</span>
+          </a>
         </div>
       </div>
     </Grid>

@@ -60,7 +60,7 @@ const SidebarBook: React.FC<IProps> = ({ name, author, price, orgPrice }) => {
         <img src={lucy} alt={"lucy"} className={classes.img} />
       </div>
       <div>
-        <Link href="#">
+        <Link href="/product">
           <a className={classes.title}>{name}</a>
         </Link>
         <p className={classes.author}>by {author}</p>

@@ -65,7 +65,7 @@ const Book: React.FC<IProps> = ({ name, price, orgPrice, author }) => {
         <div className={classes.imgContainer}>
           <img className={classes.img} src={lucy} alt={"lucy"} />
         </div>
-        <Link href="#">
+        <Link href="/product">
           <a className={classes.title}>{name}</a>
         </Link>
         <p className={classes.author}>by: {author}</p>
