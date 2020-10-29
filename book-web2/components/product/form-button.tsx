@@ -3,7 +3,7 @@ import React from "react";
 import { purple } from "../../constants/color";
 
 const useStyles = makeStyles({
-  writeReviewBtn: {
+  formBtn: {
     paddingLeft: 40,
     paddingRight: 40,
     paddingTop: 15,
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 const FormButton: React.FC<any> = ({ children, ...props }) => {
   const classes = useStyles();
   return (
-    <button {...props} className={classes.writeReviewBtn}>
+    <button {...props} className={classes.formBtn}>
       {children}
     </button>
   );

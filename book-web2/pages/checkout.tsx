@@ -7,6 +7,8 @@ import VoucherIcon from "@material-ui/icons/CallToAction";
 import { purple } from "../constants/color";
 import { VoucherForm } from "../components/checkout/voucher-form";
 import { BillingForm } from "../components/checkout/billing-form";
+import { ShippingForm } from "../components/checkout/shipping-form";
+import { PaymentMethod } from "../components/checkout/payment-method";
 
 const useStyles = makeStyles({
   couponContainer: {
@@ -52,12 +54,15 @@ const Checkout: React.FC = () => {
             </AccordionDetails>
           </Accordion>
         </Box>
-        <Grid container>
+        <Grid container spacing={4}>
+          <Grid item md={6} xs={12}>
+            <ShippingForm />
+          </Grid>
           <Grid item md={6} xs={12}>
             <BillingForm />
           </Grid>
-          <Grid item md={6} xs={12}></Grid>
         </Grid>
+        <PaymentMethod />
       </Container>
     </Page>
   );
