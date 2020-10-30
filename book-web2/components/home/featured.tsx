@@ -1,6 +1,6 @@
 import React from "react";
 import Slider, { Settings } from "react-slick";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, Grid } from "@material-ui/core";
 import FeaturedItem from "./featured/featured-item";
 import { grey } from "../../constants/color";
 
@@ -38,13 +38,13 @@ const useStyles = makeStyles({
   },
   container: {
     marginBottom: 25,
-    maxWidth: "100%",
+    maxWidth: "calc(100% - 10px)",
   },
 });
 const Featured: React.FC = () => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <Grid className={classes.container}>
       <p className={classes.title}>This week feature book</p>
       <Slider {...sliderSettings}>
         <FeaturedItem
@@ -78,7 +78,7 @@ const Featured: React.FC = () => {
           description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"}
         />
       </Slider>
-    </div>
+    </Grid>
   );
 };
 export default Featured;

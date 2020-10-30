@@ -1,75 +1,71 @@
 import * as React from "react";
 import Page from "../components/page";
-import { Grid, makeStyles } from "@material-ui/core";
-import Sidebar from "../components/home/sidebar";
-import Featured from "../components/home/featured";
+import { Box, Divider, Grid, makeStyles, MenuItem, Select } from "@material-ui/core";
+import { PageBannerTitle } from "../components/page-banner-title";
+import { FilterBar } from "../components/filter-bar/filter-bar";
 import { grey } from "../constants/color";
 import Book from "../components/book/book";
-import CategoryItem from "../components/home/category-item";
-import Newest from "../components/home/newest";
 
-const useStyles = makeStyles((theme) => ({
-  mainContent: {
-    paddingLeft: 45,
-    paddingRight: 45,
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: 15,
-      paddingRight: 15,
-    },
+const useStyles = makeStyles(() => ({
+  select: {
+    minWidth: 150,
+    maxWidth: 600,
   },
-  sectionTitle: {
-    color: grey,
+  counter: {
     fontSize: 15,
-    paddingLeft: 15,
-    marginBottom: 30,
-    textTransform: "uppercase",
-    fontFamily: "averta-semibold",
+    fontWeight: "bold",
+    color: grey,
   },
-  listItemWrapper: {
-    marginBottom: 30,
+  mainContainer: {
+    paddingLeft: 15,
+    paddingRight: 15,
   },
 }));
+
+type orderType = "default" | "rating" | "date" | "price:low" | "price:high";
 
 const index: React.FC = () => {
   const classes = useStyles();
 
+  const [order, setOrder] = React.useState<orderType>("default");
+
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setOrder(event.target.value as orderType);
+  };
+
   return (
     <Page title={"Welcome home"}>
-      <Grid className={classes.mainContent} container={true}>
-        <Featured />
-        <Grid item={true} sm={12} lg={3} md={3} xs={12}>
-          <Sidebar />
+      <PageBannerTitle title="Childrens" />
+      <Box height={50}></Box>
+      <Grid container>
+        <Grid item md={3} xs={12}>
+          <FilterBar />
         </Grid>
-        <Grid item={true} sm={12} lg={9} md={9} xs={12}>
-          <h2 className={classes.sectionTitle}>Popular</h2>
-          <Grid className={classes.listItemWrapper} container={true}>
+        <Grid className={classes.mainContainer} item md={9}>
+          <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
+            <p className={classes.counter}>10 books found</p>
+            <Select className={classes.select} autoWidth variant="outlined" value={order} onChange={handleChange}>
+              <MenuItem value={"default"}>Default</MenuItem>
+              <MenuItem value={"rating"}>Sort by rating</MenuItem>
+              <MenuItem value={"date"}>Sort by date</MenuItem>
+              <MenuItem value={"price:low"}>Sort by price : low to high</MenuItem>
+              <MenuItem value={"price:high"}>Sort by price: hight to low</MenuItem>
+            </Select>
+          </Box>
+          <Divider />
+          <Grid container>
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          </Grid>
-          <h2 className={classes.sectionTitle}>Categories</h2>
-          <Grid className={classes.listItemWrapper} container={true}>
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-          </Grid>
-          <h2 className={classes.sectionTitle}>Popular</h2>
-          <Grid className={classes.listItemWrapper} container={true}>
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
             <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
           </Grid>
         </Grid>
-        <Newest />
       </Grid>
     </Page>
   );

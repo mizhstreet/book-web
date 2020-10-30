@@ -7,7 +7,7 @@ interface IProps {
 
 const useStyles = makeStyles({
   background: {
-    minHeight: 250,
+    minHeight: 200,
     width: "100%",
     backgroundColor: purple,
     display: "flex",
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   title: {
-    fontSize: 60,
+    fontSize: 50,
     color: "white",
     fontWeight: "bold",
   },
