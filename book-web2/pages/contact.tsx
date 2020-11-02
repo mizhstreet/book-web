@@ -1,5 +1,4 @@
 import { Divider } from "@material-ui/core";
-import { GetStaticProps } from "next";
 import React from "react";
 import { ContactInfo } from "../components/contact/contact-info";
 import { ShopInfo } from "../components/contact/shop-info";
