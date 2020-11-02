@@ -1,4 +1,4 @@
-import { Box, Checkbox, Divider, makeStyles, Typography } from "@material-ui/core";
+import { Box, Divider, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import { grey } from "../../constants/color";
 import { FilterAttrItem } from "./filter-attr-item";

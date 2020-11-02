@@ -6,7 +6,7 @@ import { PageBannerTitle } from "../components/page-banner-title";
 import { Summary } from "../components/cart/summary";
 import { CartItems } from "../components/cart/cart-items";
 
-const AuthorProfile: React.FC = () => {
+const Cart: React.FC = () => {
   return (
     <Page title="Lucy Crehan">
       <PageBannerTitle title="Cart" />
@@ -18,4 +18,4 @@ const AuthorProfile: React.FC = () => {
   );
 };
 
-export default AuthorProfile;
+export default Cart;
