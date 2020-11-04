@@ -6,13 +6,9 @@ import { purple } from "../../constants/color";
 // import { FormButton } from "./form-button";
 
 interface IFormValues {
-  name: string;
-  email: string;
-  rating: number;
-  review: string;
-  prefecture: string;
+  username: string;
+  password: string;
 }
-
 const useStyles = makeStyles({
   formHeadline: {
     paddingBottom: 20,
@@ -56,13 +52,10 @@ const useStyles = makeStyles({
   },
 });
 
-const ShippingForm: React.FC = () => {
+const LoginForm: React.FC = () => {
   const initialValues: IFormValues = {
-    name: "",
-    email: "",
-    rating: 0,
-    review: "",
-    prefecture: "",
+    username: "",
+    password: "",
   };
   const classes = useStyles();
   return (
@@ -183,4 +176,4 @@ const ShippingForm: React.FC = () => {
   );
 };
 
-export { ShippingForm };
+export { LoginForm };

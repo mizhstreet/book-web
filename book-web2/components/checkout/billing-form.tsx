@@ -4,7 +4,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Divider,
   FormControl,
   Grid,
   makeStyles,
@@ -16,7 +15,6 @@ import {
 } from "@material-ui/core";
 import { TextField, Select } from "formik-material-ui";
 import { purple } from "../../constants/color";
-// import { FormButton } from "./form-button";
 
 interface IFormValues {
   name: string;
