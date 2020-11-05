@@ -1,56 +1,65 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import { Divider, FormControl, Grid, makeStyles, MenuItem, Paper, Typography } from "@material-ui/core";
-import { TextField, Select } from "formik-material-ui";
-import { purple } from "../../constants/color";
-// import { FormButton } from "./form-button";
+import { Box, Button, FormControl, Grid, InputAdornment, makeStyles, Paper, Typography } from "@material-ui/core";
+import { TextField } from "formik-material-ui";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import LockIcon from "@material-ui/icons/Lock";
+
+import logo from "../../public/img/logo.png";
+import { grey, purple } from "../../constants/color";
+import Link from "next/link";
 
 interface IFormValues {
   username: string;
   password: string;
 }
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  container: {
+    marginTop: "15%",
+    paddingTop: 70,
+  },
+  background: {
+    backgroundColor: purple,
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    minHeight: 800,
+  },
   formHeadline: {
     paddingBottom: 20,
-    paddingLeft: 30,
+    textAlign: "center",
     paddingTop: 20,
-    fontWeight: "bold",
-    fontSize: 18,
-    color: purple,
+    fontSize: 16,
+    color: grey,
   },
   inputField: {
-    padding: 5,
-    paddingLeft: 0,
-    paddingTop: 0,
+    padding: 15,
+    paddingLeft: 5,
+  },
+  inputFieldIcon: {
+    color: grey,
   },
   fieldLabel: {
     fontWeight: "bold",
-    fontSize: 16,
-    paddingBottom: 5,
+    fontSize: 18,
+    paddingBottom: 10,
   },
   fieldContainer: {
     marginBottom: 25,
   },
   formContainer: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 0,
+    paddingBottom: 50,
     paddingLeft: 30,
     paddingRight: 30,
-  },
-  btnContainer: {
-    paddingTop: 20,
-    paddingBottom: 20,
-  },
-  underline: {
-    "&:before": {
-      borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: 15,
+      paddingRight: 15,
     },
   },
-  select: {
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-});
+}));
 
 const LoginForm: React.FC = () => {
   const initialValues: IFormValues = {
@@ -59,120 +68,92 @@ const LoginForm: React.FC = () => {
   };
   const classes = useStyles();
   return (
-    <Paper elevation={6}>
-      <Typography className={classes.formHeadline} component={"h3"}>
-        Shipping details
-      </Typography>
-      <Divider />
-      <Formik
-        initialValues={initialValues}
-        onSubmit={async (values, { setSubmitting }) => {
-          console.log("something");
-          setSubmitting(true);
-        }}
-      >
-        {({
-          values,
-          // errors,
-          // touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          submitForm,
-          /* and other goodies */
-        }) => (
-          <Form className={classes.formContainer}>
-            <Grid container direction="column">
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Name</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Company Name (optional)</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Prefectural</label>
-                <Field
-                  classes={{ root: classes.select }}
-                  component={Select}
-                  variant="outlined"
-                  name="prefecture"
-                  value="Hokkaido"
-                >
-                  <MenuItem value={"Hokkaido"}>Hokkaido</MenuItem>
-                  <MenuItem value={"Tokyo"}>Tokyo</MenuItem>
-                  <MenuItem value={"Osaka"}>Osaka</MenuItem>
-                </Field>
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Street address</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Postcode</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Town / City</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Phone number</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-              <FormControl className={classes.fieldContainer}>
-                <label className={classes.fieldLabel}>Email address</label>
-                <Field
-                  component={TextField}
-                  fullWidth={true}
-                  inputProps={{ className: classes.inputField }}
-                  InputProps={{ classes: { underline: classes.underline } }}
-                  name="name"
-                />
-              </FormControl>
-            </Grid>
-          </Form>
-        )}
-      </Formik>
-    </Paper>
+    <div className={classes.background}>
+      <Grid container justify="center">
+        {/* <div className={classes.background}></div> */}
+        <Grid item md={5} sm={7} xs={11}>
+          <Paper className={classes.container} elevation={6}>
+            <Box display="flex" justifyContent="center">
+              <img src={logo} alt="" />
+            </Box>
+            <Typography className={classes.formHeadline} component={"h3"}>
+              Login
+            </Typography>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={async (values, { setSubmitting }) => {
+                console.log("something");
+                setSubmitting(true);
+              }}
+            >
+              {({
+                values,
+                // errors,
+                // touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting,
+                submitForm,
+                /* and other goodies */
+              }) => (
+                <Form className={classes.formContainer}>
+                  <Grid container direction="column">
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Username or email</label>
+                      <Field
+                        component={TextField}
+                        fullWidth={true}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AccountCircle className={classes.inputFieldIcon} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        name="username"
+                      />
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Password</label>
+                      <Field
+                        type="password"
+                        component={TextField}
+                        fullWidth={true}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <LockIcon className={classes.inputFieldIcon} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        name="password"
+                      />
+                    </FormControl>
+                    <Box mb={2}>
+                      <Link href="/forgot-password">
+                        <a>Forgot password</a>
+                      </Link>
+                      <br />
+                      <Link href="/register">
+                        <a>Don't have an account? Register now!</a>
+                      </Link>
+                    </Box>
+                    <Button variant="contained" color="primary">
+                      Login
+                    </Button>
+                  </Grid>
+                </Form>
+              )}
+            </Formik>
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

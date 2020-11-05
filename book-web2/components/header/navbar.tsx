@@ -8,14 +8,14 @@ import { Hidden } from "@material-ui/core";
 const useStyles = makeStyles({
   menuWrap: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   menuItem: {
     "&:first-child": {
-      paddingLeft: 0
+      paddingLeft: 0,
     },
     "&:last-child": {
-      paddingRight: 0
+      paddingRight: 0,
     },
     display: "flex",
     alignItems: "center",
@@ -23,18 +23,18 @@ const useStyles = makeStyles({
     paddingBottom: 20,
     color: purple,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
   },
   link: {
     "&:hover": {
       color: purple,
-      textDecoration: "none"
+      textDecoration: "none",
     },
     color: purple,
     fontSize: 18,
     textDecoration: "none",
-    transition: "all .5s"
-  }
+    transition: "all .5s",
+  },
 });
 const Navbar: React.FC = () => {
   const classes = useStyles();
@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
       <nav>
         <ul className={classes.menuWrap}>
           <li className={classes.menuItem}>
-            <Link href={"/#"}>
+            <Link href={"/"}>
               <a className={classes.link}>Home</a>
             </Link>
           </li>
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li className={classes.menuItem}>
-            <Link href={"/#"}>
+            <Link href={"/contact"}>
               <a className={classes.link}>Contact us</a>
             </Link>
           </li>
