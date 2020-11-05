@@ -5,7 +5,7 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import ShareIcon from "@material-ui/icons/Share";
-import Page from "../components/page";
+import { Page } from "../components/page";
 import { Grid, makeStyles, Container, colors } from "@material-ui/core";
 import { purple } from "../constants/color";
 import { ReviewComment } from "../components/product/review-comment";

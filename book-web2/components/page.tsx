@@ -20,4 +20,4 @@ const Page: FC<IProps> = ({ children, title }) => {
   );
 };
 
-export default Page;
+export { Page };

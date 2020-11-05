@@ -1,6 +1,6 @@
 import React from "react";
 import lady from "../public/img/lady_author_3.jpg";
-import Page from "../components/page";
+import { Page } from "../components/page";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";

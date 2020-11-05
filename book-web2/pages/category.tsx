@@ -1,5 +1,5 @@
 import * as React from "react";
-import Page from "../components/page";
+import { Page } from "../components/page";
 import { Box, Divider, Grid, makeStyles, MenuItem, Select } from "@material-ui/core";
 import { PageBannerTitle } from "../components/page-banner-title";
 import { FilterBar } from "../components/filter-bar/filter-bar";

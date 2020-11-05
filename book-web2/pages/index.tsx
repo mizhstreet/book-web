@@ -1,5 +1,5 @@
 import * as React from "react";
-import Page from "../components/page";
+import { Page } from "../components/page";
 import { Grid, makeStyles } from "@material-ui/core";
 import Sidebar from "../components/home/sidebar";
 import Featured from "../components/home/featured";

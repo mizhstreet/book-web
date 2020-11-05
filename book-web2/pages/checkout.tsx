@@ -1,5 +1,5 @@
 import React from "react";
-import Page from "../components/page";
+import { Page } from "../components/page";
 import { Accordion, AccordionSummary, Box, Container, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import { PageBannerTitle } from "../components/page-banner-title";
 import AccordionDetails from "@material-ui/core/AccordionDetails/AccordionDetails";

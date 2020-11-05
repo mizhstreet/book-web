@@ -2,7 +2,7 @@ import { Divider } from "@material-ui/core";
 import React from "react";
 import { ContactInfo } from "../components/contact/contact-info";
 import { ShopInfo } from "../components/contact/shop-info";
-import Page from "../components/page";
+import { Page } from "../components/page";
 
 import { PageBannerTitle } from "../components/page-banner-title";
 
