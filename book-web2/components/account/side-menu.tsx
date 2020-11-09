@@ -1,4 +1,4 @@
-import { Box, Grid, Hidden, makeStyles, Typography } from "@material-ui/core";
+import { Box, Grid, Hidden, makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import Link from "next/link";
 import React from "react";
@@ -12,8 +12,10 @@ const useStyles = makeStyles({
     paddingLeft: 20,
     paddingRight: 20,
     borderRadius: 15,
-    // border: "2px solid",
-    // borderColor: "#7e57c2",
+    transition: ".1s all",
+    "&:hover": {
+      color: purple,
+    },
   },
   itemContainer: {
     paddingTop: 15,

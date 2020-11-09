@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Hidden, makeStyles, Typography } from "@material-ui/core";
+import { Box, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import LockTwoToneIcon from "@material-ui/icons/LockTwoTone";
 import HomeTwoToneIcon from "@material-ui/icons/HomeTwoTone";
