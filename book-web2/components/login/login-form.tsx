@@ -1,16 +1,17 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import { Box, Button, FormControl, Grid, InputAdornment, makeStyles, Paper, Typography } from "@material-ui/core";
-import { TextField } from "formik-material-ui";
+import { Box, Button, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import LockIcon from "@material-ui/icons/Lock";
 
 import logo from "../../public/img/logo.png";
 import { grey, purple } from "../../constants/color";
 import Link from "next/link";
+import { OutlinedTextfield } from "../form/outlined-textfield";
+import * as Yup from "yup";
 
 interface IFormValues {
-  username: string;
+  email: string;
   password: string;
 }
 const useStyles = makeStyles((theme) => ({
@@ -61,9 +62,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const DisplayingErrorMessagesSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").min(2, "Too Short!").max(50, "Too Long!").required("Required"),
+  password: Yup.string().required("Required"),
+});
+
 const LoginForm: React.FC = () => {
   const initialValues: IFormValues = {
-    username: "",
+    email: "",
     password: "",
   };
   const classes = useStyles();
@@ -81,6 +87,7 @@ const LoginForm: React.FC = () => {
             </Typography>
             <Formik
               initialValues={initialValues}
+              validationSchema={DisplayingErrorMessagesSchema}
               onSubmit={async (values, { setSubmitting }) => {
                 console.log("something");
                 setSubmitting(true);
@@ -88,8 +95,8 @@ const LoginForm: React.FC = () => {
             >
               {({
                 values,
-                // errors,
-                // touched,
+                errors,
+                touched,
                 handleChange,
                 handleBlur,
                 handleSubmit,
@@ -99,41 +106,19 @@ const LoginForm: React.FC = () => {
               }) => (
                 <Form className={classes.formContainer}>
                   <Grid container direction="column">
-                    <FormControl className={classes.fieldContainer}>
-                      <label className={classes.fieldLabel}>Username or email</label>
-                      <Field
-                        component={TextField}
-                        fullWidth={true}
-                        variant="outlined"
-                        inputProps={{ className: classes.inputField }}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <AccountCircle className={classes.inputFieldIcon} />
-                            </InputAdornment>
-                          ),
-                        }}
-                        name="username"
-                      />
-                    </FormControl>
-                    <FormControl className={classes.fieldContainer}>
-                      <label className={classes.fieldLabel}>Password</label>
-                      <Field
-                        type="password"
-                        component={TextField}
-                        fullWidth={true}
-                        variant="outlined"
-                        inputProps={{ className: classes.inputField }}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <LockIcon className={classes.inputFieldIcon} />
-                            </InputAdornment>
-                          ),
-                        }}
-                        name="password"
-                      />
-                    </FormControl>
+                    <Field
+                      labelname="Username or email"
+                      component={OutlinedTextfield}
+                      Icon={AccountCircle}
+                      name="email"
+                    />
+                    <Field
+                      type="password"
+                      labelname="Password"
+                      component={OutlinedTextfield}
+                      Icon={LockIcon}
+                      name="password"
+                    />
                     <Box mb={2}>
                       <Link href="/forgot-password">
                         <a>Forgot password</a>
@@ -143,7 +128,7 @@ const LoginForm: React.FC = () => {
                         <a>Don't have an account? Register now!</a>
                       </Link>
                     </Box>
-                    <Button variant="contained" color="primary">
+                    <Button type="submit" variant="contained" color="primary">
                       Login
                     </Button>
                   </Grid>
