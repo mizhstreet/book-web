@@ -4,7 +4,6 @@ import { Box, Button, Container, FormControl, Grid, makeStyles, Typography } fro
 import { Page } from "../../components/page";
 import { PageBannerTitle } from "../../components/page-banner-title";
 import { purple } from "../../constants/color";
-import { SideMenu } from "../../components/account/side-menu";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 
@@ -68,7 +67,7 @@ const index: React.FC = () => {
               /* and other goodies */
             }) => (
               <Box maxWidth={500}>
-                <Form className={classes.formContainer}>
+                <Form>
                   <Grid container direction="column">
                     <FormControl className={classes.fieldContainer}>
                       <label className={classes.fieldLabel}>Current password</label>
