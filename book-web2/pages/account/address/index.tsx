@@ -1,17 +1,10 @@
 import React from "react";
 import { Box, Button, Container, Grid, makeStyles, Typography } from "@material-ui/core";
-
 import { Page } from "../../../components/page";
 import { PageBannerTitle } from "../../../components/page-banner-title";
 import { SideMenu } from "../../../components/account/side-menu";
 import { grey } from "@material-ui/core/colors";
 import Link from "next/link";
-
-interface IFormValues {
-  old: string;
-  new: string;
-  reNew: string;
-}
 
 const useStyles = makeStyles({
   container: {
@@ -32,12 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const index: React.FC = () => {
-  const initialValues: IFormValues = {
-    old: "",
-    new: "",
-    reNew: "",
-  };
+const Address: React.FC = () => {
   const classes = useStyles();
   return (
     <Page title="my account">
@@ -91,4 +79,4 @@ const index: React.FC = () => {
   );
 };
 
-export default index;
+export default Address;

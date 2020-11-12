@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Button, Container, FormControl, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Button, Container, FormControl, Grid, makeStyles, MenuItem, Typography } from "@material-ui/core";
 
 import { Page } from "../../../components/page";
 import { PageBannerTitle } from "../../../components/page-banner-title";
 import { purple } from "../../../constants/color";
 import { Field, Form, Formik } from "formik";
-import { TextField } from "formik-material-ui";
+import { Select, TextField } from "formik-material-ui";
 
 interface IFormValues {
   old: string;
@@ -31,6 +31,10 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     fontSize: 14,
   },
+  select: {
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
 });
 
 const Edit: React.FC = () => {
@@ -42,11 +46,11 @@ const Edit: React.FC = () => {
   const classes = useStyles();
   return (
     <Page title="my account">
-      <PageBannerTitle title="Change password" />
+      <PageBannerTitle title="Edit Address" />
       <Container>
         <Box>
           <Typography className={classes.sectionTitle} component="h2">
-            Your password
+            Your Address
           </Typography>
           <Formik
             initialValues={initialValues}
@@ -70,7 +74,7 @@ const Edit: React.FC = () => {
                 <Form>
                   <Grid container direction="column">
                     <FormControl className={classes.fieldContainer}>
-                      <label className={classes.fieldLabel}>Current password</label>
+                      <label className={classes.fieldLabel}>Name</label>
                       <Field
                         component={TextField}
                         variant="outlined"
@@ -79,7 +83,7 @@ const Edit: React.FC = () => {
                       />
                     </FormControl>
                     <FormControl className={classes.fieldContainer}>
-                      <label className={classes.fieldLabel}>New password</label>
+                      <label className={classes.fieldLabel}>Company Name</label>
                       <Field
                         component={TextField}
                         variant="outlined"
@@ -88,12 +92,62 @@ const Edit: React.FC = () => {
                       />
                     </FormControl>
                     <FormControl className={classes.fieldContainer}>
-                      <label className={classes.fieldLabel}>Re-enter new password</label>
+                      <label className={classes.fieldLabel}>Prefectural</label>
+                      <Field
+                        classes={{ root: classes.select }}
+                        component={Select}
+                        variant="outlined"
+                        name="prefecture"
+                        value="Hokkaido"
+                      >
+                        <MenuItem value={"Hokkaido"}>Hokkaido</MenuItem>
+                        <MenuItem value={"Tokyo"}>Tokyo</MenuItem>
+                        <MenuItem value={"Osaka"}>Osaka</MenuItem>
+                      </Field>
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Street Address</label>
                       <Field
                         component={TextField}
                         variant="outlined"
                         inputProps={{ className: classes.inputField }}
-                        name="reNew"
+                        name="new"
+                      />
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Postcode</label>
+                      <Field
+                        component={TextField}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        name="new"
+                      />
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Town/City</label>
+                      <Field
+                        component={TextField}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        name="new"
+                      />
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Phone number</label>
+                      <Field
+                        component={TextField}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        name="new"
+                      />
+                    </FormControl>
+                    <FormControl className={classes.fieldContainer}>
+                      <label className={classes.fieldLabel}>Email address</label>
+                      <Field
+                        component={TextField}
+                        variant="outlined"
+                        inputProps={{ className: classes.inputField }}
+                        name="new"
                       />
                     </FormControl>
                     <Box display="flex" justifyContent="flexStart">
