@@ -42,7 +42,7 @@ const index: React.FC = () => {
               <Grid container component="ul" spacing={2}>
                 <MenuItem href="#" Icon={EditTwoToneIcon} description="Edit your personal info" />
                 <MenuItem href="/account/change-password" Icon={LockTwoToneIcon} description="Change your password" />
-                <MenuItem href="#" Icon={HomeTwoToneIcon} description="Manage address book" />
+                <MenuItem href="/account/address" Icon={HomeTwoToneIcon} description="Manage address book" />
                 <MenuItem href="#" Icon={FavoriteTwoToneIcon} description="Your wishlist" />
               </Grid>
             </Box>

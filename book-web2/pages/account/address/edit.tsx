@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Button, Container, FormControl, Grid, makeStyles, Typography } from "@material-ui/core";
 
-import { Page } from "../../components/page";
-import { PageBannerTitle } from "../../components/page-banner-title";
-import { purple } from "../../constants/color";
+import { Page } from "../../../components/page";
+import { PageBannerTitle } from "../../../components/page-banner-title";
+import { purple } from "../../../constants/color";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ChangePassword: React.FC = () => {
+const Edit: React.FC = () => {
   const initialValues: IFormValues = {
     old: "",
     new: "",
@@ -112,4 +112,4 @@ const ChangePassword: React.FC = () => {
   );
 };
 
-export default ChangePassword;
+export default Edit;
