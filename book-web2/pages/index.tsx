@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Page } from "../components/page";
-import { Grid, makeStyles } from "@material-ui/core";
+import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
 import Sidebar from "../components/home/sidebar";
 import Featured from "../components/home/featured";
 import { grey } from "../constants/color";
 import Book from "../components/book/book";
 import CategoryItem from "../components/home/category-item";
 import Newest from "../components/home/newest";
+import { useAllBooksQuery, useAllCategoriesQuery } from "../generated/apolloComponent";
+import { generateImageURL } from "../helpers/generateImageUrl";
 
 const useStyles = makeStyles((theme) => ({
   mainContent: {
@@ -32,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
 
 const index: React.FC = () => {
   const classes = useStyles();
-
+  const allBooksQuery = useAllBooksQuery();
+  const allCategories = useAllCategoriesQuery();
   return (
     <Page title={"Welcome home"}>
       <Grid className={classes.mainContent} container={true}>
@@ -43,30 +46,47 @@ const index: React.FC = () => {
         <Grid item={true} sm={12} lg={9} md={9} xs={12}>
           <h2 className={classes.sectionTitle}>Popular</h2>
           <Grid className={classes.listItemWrapper} container={true}>
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            {allBooksQuery.loading && <CircularProgress />}
+            {allBooksQuery.data &&
+              allBooksQuery.data.books.map((c) => (
+                <Book
+                  key={c.id}
+                  name={c.name}
+                  price={c.price}
+                  orgPrice={8.99}
+                  author={c.author![0].name}
+                  image={generateImageURL(c.image)}
+                />
+              ))}
           </Grid>
           <h2 className={classes.sectionTitle}>Categories</h2>
           <Grid className={classes.listItemWrapper} container={true}>
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
+            {allCategories.data &&
+              allCategories.data.categories.map((c) => (
+                <CategoryItem
+                  key={c.id}
+                  name={c.name}
+                  // price={c.price}
+                  // orgPrice={8.99}
+                  // author={c.author![0].name}
+                  image={generateImageURL(c.image)}
+                />
+              ))}
           </Grid>
           <h2 className={classes.sectionTitle}>Popular</h2>
           <Grid className={classes.listItemWrapper} container={true}>
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-            <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+            {allBooksQuery.loading && <CircularProgress />}
+            {allBooksQuery.data &&
+              allBooksQuery.data.books.map((c) => (
+                <Book
+                  key={c.id}
+                  name={c.name}
+                  price={c.price}
+                  orgPrice={8.99}
+                  author={c.author![0].name}
+                  image={generateImageURL(c.image)}
+                />
+              ))}
           </Grid>
         </Grid>
         <Newest />

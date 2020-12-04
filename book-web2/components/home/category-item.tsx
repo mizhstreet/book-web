@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Grid } from "@material-ui/core";
-import thriller from "../../public/img/cate-thrillers.png";
 import { makeStyles } from "@material-ui/styles";
+
+interface IProps {
+  name: string;
+  image: string;
+}
 
 const useStyles = makeStyles({
   img: {
@@ -29,14 +33,14 @@ const useStyles = makeStyles({
   },
 });
 
-const CategoryItem: React.FC = () => {
+const CategoryItem: React.FC<IProps> = ({ name, image }) => {
   const classes = useStyles();
   return (
     <Grid item={true} container={true} className={classes.itemWrapper} xs={12} sm={6} md={4}>
       <div className={classes.imgContainer}>
-        <img className={classes.img} src={thriller} alt={"Thrill"} />
+        <img className={classes.img} src={image} alt={"Thrill"} />
       </div>
-      <h5 className={classes.name}>Thriller</h5>
+      <h5 className={classes.name}>{name}</h5>
     </Grid>
   );
 };

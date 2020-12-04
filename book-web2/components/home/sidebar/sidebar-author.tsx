@@ -1,12 +1,12 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Link from "next/link";
-import lady from "../../../public/img/lady_author_3.jpg";
 import { purple, grey } from "../../../constants/color";
 
 interface IProps {
   name: string;
   bookCount: number;
+  image: string;
 }
 const useStyles = makeStyles({
   container: {
@@ -39,12 +39,12 @@ const useStyles = makeStyles({
     marginTop: 6,
   },
 });
-const SidebarAuthor: React.FC<IProps> = ({ name, bookCount }) => {
+const SidebarAuthor: React.FC<IProps> = ({ name, bookCount, image }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <div className={classes.imgContainer}>
-        <img className={classes.img} alt={"author"} src={lady} />
+        <img className={classes.img} alt={name} src={image} />
       </div>
       <div>
         <Link href="/author-profile">

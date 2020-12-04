@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
 import Link from "next/link";
-import lucy from "../../public/img/products/bash_and_lucy-2.jpg";
+import LazyLoad from "react-lazyload";
 import { grey, purple } from "../../constants/color";
 interface IProps {
   name: string;
   author: string;
   orgPrice?: number;
   price: number;
+  image: string;
 }
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -57,13 +58,15 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "averta-bold",
   },
 }));
-const Book: React.FC<IProps> = ({ name, price, orgPrice, author }) => {
+const Book: React.FC<IProps> = ({ name, price, orgPrice, author, image }) => {
   const classes = useStyles();
   return (
     <Grid item={true} lg={3} xs={6} sm={6} md={4}>
       <div className={classes.container}>
         <div className={classes.imgContainer}>
-          <img className={classes.img} src={lucy} alt={"lucy"} />
+          <LazyLoad height={200}>
+            <img className={classes.img} src={image} alt={"lucy"} />
+          </LazyLoad>
         </div>
         <Link href="/product">
           <a className={classes.title}>{name}</a>

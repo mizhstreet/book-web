@@ -1,14 +1,16 @@
 import React from "react";
 import lady from "../public/img/lady_author_3.jpg";
-import { Page } from "../components/page";
+import { Page } from "../../components/page";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import { Container, Grid, makeStyles } from "@material-ui/core";
-import { purple } from "../constants/color";
-import Book from "../components/book/book";
-import AuthorSlider from "../components/author-profile/author-slider";
+import { purple } from "../../constants/color";
+import Book from "../../components/book/book";
+import AuthorSlider from "../../components/author-profile/author-slider";
+import { useAuthorQuery } from "../../generated/apolloComponent";
+import { useRouter } from "next/dist/client/router";
 
 const useStyles = makeStyles((theme) => ({
   authorBackground: {
@@ -128,6 +130,12 @@ const useStyles = makeStyles((theme) => ({
 
 const AuthorProfile: React.FC = () => {
   const classes = useStyles();
+  const router = useRouter();
+  const authorQuery = useAuthorQuery({
+    variables: {
+      slug: router.query.slug as string,
+    },
+  });
   return (
     <Page title="Lucy Crehan">
       <div className={classes.authorContainer}>
