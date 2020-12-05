@@ -549,7 +549,7 @@ export type AllAuthorsQuery = (
   { __typename?: 'Query' }
   & { authors: Array<(
     { __typename?: 'Author' }
-    & Pick<Author, 'id' | 'name' | 'image'>
+    & Pick<Author, 'id' | 'name' | 'image' | 'slug'>
   )> }
 );
 
@@ -562,7 +562,11 @@ export type AuthorQuery = (
   { __typename?: 'Query' }
   & { author: (
     { __typename?: 'Author' }
-    & Pick<Author, 'id' | 'name' | 'image'>
+    & Pick<Author, 'id' | 'name' | 'description' | 'image'>
+    & { books: Array<(
+      { __typename?: 'Book' }
+      & Pick<Book, 'id' | 'name' | 'price' | 'sale' | 'image'>
+    )> }
   ) }
 );
 
@@ -599,6 +603,7 @@ export const AllAuthorsDocument = gql`
     id
     name
     image
+    slug
   }
 }
     `;
@@ -632,7 +637,15 @@ export const AuthorDocument = gql`
   author(slug: $slug) {
     id
     name
+    description
     image
+    books {
+      id
+      name
+      price
+      sale
+      image
+    }
   }
 }
     `;

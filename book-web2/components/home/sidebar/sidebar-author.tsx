@@ -7,6 +7,7 @@ interface IProps {
   name: string;
   bookCount: number;
   image: string;
+  slug: string;
 }
 const useStyles = makeStyles({
   container: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles({
     marginTop: 6,
   },
 });
-const SidebarAuthor: React.FC<IProps> = ({ name, bookCount, image }) => {
+const SidebarAuthor: React.FC<IProps> = ({ name, bookCount, image, slug }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -47,7 +48,7 @@ const SidebarAuthor: React.FC<IProps> = ({ name, bookCount, image }) => {
         <img className={classes.img} alt={name} src={image} />
       </div>
       <div>
-        <Link href="/author-profile">
+        <Link href={`/author-profile/${slug}`}>
           <a className={classes.name}>{name}</a>
         </Link>
         <p className={classes.bookCount}>{bookCount} Book</p>

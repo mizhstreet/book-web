@@ -4,7 +4,15 @@ export const authorQuery = gql`
     author(slug: $slug) {
       id
       name
+      description
       image
+      books {
+        id
+        name
+        price
+        sale
+        image
+      }
     }
   }
 `;

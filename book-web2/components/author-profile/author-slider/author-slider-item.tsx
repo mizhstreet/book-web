@@ -2,31 +2,38 @@ import * as React from "react";
 import { Grid } from "@material-ui/core";
 import Link from "next/link";
 import { makeStyles } from "@material-ui/styles";
-import lucy from "../../../public/img/bash_and_lucy-2.jpg";
-import lady from "../../../public/img/lady_author_3.jpg";
 import { purple } from "../../../constants/color";
+import { getRandomInt } from "../../../helpers/getRandomInt";
 
 interface IProps {
   name: string;
-  totalBooks: number;
+  image: string;
+  slug: string;
 }
+
 const useStyles = makeStyles({
   container: {
     paddingTop: 15,
     paddingLeft: 30,
     paddingRight: 30,
     marginBottom: 25,
+    width: "100%",
     textAlign: "center",
   },
   img: {
-    width: "75%",
-    height: "auto",
-    borderRadius: "50%",
+    width: "100%",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
   imgContainer: {
-    display: "flex",
-    flex: 1,
-    justifyContent: "center",
+    position: "relative",
+    width: "75%",
+    paddingTop: "75%",
+    borderRadius: "50%",
+    overflow: "hidden",
+    margin: "0 auto",
   },
   name: {
     "&:hover": {
@@ -47,18 +54,18 @@ const useStyles = makeStyles({
   },
 });
 
-const AuthorSliderItem: React.FC<IProps> = ({ name, totalBooks }) => {
+const AuthorSliderItem: React.FC<IProps> = ({ name, image, slug }) => {
   const classes = useStyles();
   return (
     <Grid container>
       <div className={classes.container}>
         <div className={classes.imgContainer}>
-          <img className={classes.img} src={lady} alt={"lucy"} />
+          <img className={classes.img} src={image} alt={"lucy"} />
         </div>
-        <Link href="#">
+        <Link href={`/author-profile/${slug}`}>
           <a className={classes.name}>{name}</a>
         </Link>
-        <p className={classes.author}>{totalBooks} books</p>
+        <p className={classes.author}>{getRandomInt(2, 20)} books</p>
       </div>
     </Grid>
   );

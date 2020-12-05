@@ -5,6 +5,7 @@ export const allAuthorsQuery = gql`
       id
       name
       image
+      slug
     }
   }
 `;

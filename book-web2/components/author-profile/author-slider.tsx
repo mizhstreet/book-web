@@ -1,7 +1,9 @@
 import * as React from "react";
-import { makeStyles, Grid, Container } from "@material-ui/core";
+import { makeStyles, Grid, Container, CircularProgress } from "@material-ui/core";
 import Slider, { Settings } from "react-slick";
 import AuthorSliderItem from "./author-slider/author-slider-item";
+import { useAllAuthorsQuery } from "../../generated/apolloComponent";
+import { generateImageURL } from "../../helpers/generateImageUrl";
 
 const sliderSettings: Settings = {
   autoplay: false,
@@ -51,20 +53,17 @@ const useStyles = makeStyles({
 
 const AuthorSlider: React.FC = () => {
   const classes = useStyles();
+  const { data, loading } = useAllAuthorsQuery();
   return (
     <Grid container className={classes.container}>
       <Container>
         <h3 className={classes.sectionHead}>Explore more authors</h3>
         <Slider {...sliderSettings}>
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
-          <AuthorSliderItem name="Sarah Wilson" totalBooks={4} />
+          {loading && <CircularProgress />}
+          {data?.authors &&
+            data?.authors.map((a) => (
+              <AuthorSliderItem key={a.id} name={a.name} image={generateImageURL(a.image)} slug={a.slug} />
+            ))}
         </Slider>
       </Container>
     </Grid>

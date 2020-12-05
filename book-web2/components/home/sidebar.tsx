@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
       <div>
         {data &&
           data.authors.map((a) => (
-            <SidebarAuthor key={a.id} name={a.name} bookCount={10} image={generateImageURL(a.image)} />
+            <SidebarAuthor key={a.id} name={a.name} bookCount={10} slug={a.slug} image={generateImageURL(a.image)} />
           ))}
       </div>
     </aside>

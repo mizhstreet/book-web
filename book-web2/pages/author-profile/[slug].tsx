@@ -1,5 +1,4 @@
 import React from "react";
-import lady from "../public/img/lady_author_3.jpg";
 import { Page } from "../../components/page";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -11,6 +10,7 @@ import Book from "../../components/book/book";
 import AuthorSlider from "../../components/author-profile/author-slider";
 import { useAuthorQuery } from "../../generated/apolloComponent";
 import { useRouter } from "next/dist/client/router";
+import { generateImageURL } from "../../helpers/generateImageUrl";
 
 const useStyles = makeStyles((theme) => ({
   authorBackground: {
@@ -136,19 +136,21 @@ const AuthorProfile: React.FC = () => {
       slug: router.query.slug as string,
     },
   });
+
+  const author = authorQuery.data?.author;
+  if (!author) {
+    return <div>Null</div>;
+  }
+
   return (
-    <Page title="Lucy Crehan">
+    <Page title={author.name}>
       <div className={classes.authorContainer}>
         <div className={classes.authorBackground}></div>
         <div className={classes.avatar}>
-          <img className={classes.avatarImg} src={lady} alt="" />
+          <img className={classes.avatarImg} src={generateImageURL(author.image)} alt={author.name} />
         </div>
-        <h3 className={classes.authorName}>Lucy Crehan</h3>
-        <p className={classes.authorQuote}>
-          "I'll cross my heart and hope to die and we're always and forever I'll be by your side I'll cross my heart and
-          hope to die and we're always and forever I'll be by your side I'll cross my heart and hope to die and we're
-          always and forever I'll be by your side"
-        </p>
+        <h3 className={classes.authorName}>{author.name}</h3>
+        <p className={classes.authorQuote}>{author.description}</p>
         <div>
           <p className={classes.authorShareText}>Share this author</p>
           <ul className={classes.socialMediaList}>
@@ -172,26 +174,11 @@ const AuthorProfile: React.FC = () => {
           <li className={`${classes.filterItem} ${classes.filterItemActive}`}>
             <p>Lastest Publication</p>
           </li>
-          <li className={classes.filterItem}>
-            <p>Best Seller</p>
-          </li>
-          <li className={classes.filterItem}>
-            <p>Featured</p>
-          </li>
         </ul>
         <Grid container>
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
-          <Book name={"Boring Girls, A Novel"} price={5.03} orgPrice={8.99} author={"Sara Taylor"} />
+          {author.books.map((b) => (
+            <Book key={b.id} name={b.name} author={author.name} price={b.price} image={generateImageURL(b.image)} />
+          ))}
         </Grid>
         <Grid container justify="center">
           <button className={classes.showMoreBtn}>Show more</button>
