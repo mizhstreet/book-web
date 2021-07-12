@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import Link from "next/link";
 import icon1 from "../../public/img/icon-1.png";
 import icon2 from "../../public/img/icon-2.png";
 import { grey, purple } from "../../constants/color";
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: "averta-semibold",
       marginBottom: 1,
       color: purple,
+      cursor: "pointer",
     },
     "& > span": {
       fontFamily: "averta-semibold",
@@ -57,10 +59,10 @@ const HeaderCart: React.FC = () => {
       <div className={classes.itemWrapper}>
         <img alt={"some"} src={icon2} />
         <div className={classes.content}>
-          <a href="/cart">
+          <Link href="/cart">
             <h5>Cart</h5>
-            <span>0</span>
-          </a>
+          </Link>
+          <span>0</span>
         </div>
       </div>
     </Grid>

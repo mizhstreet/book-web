@@ -6,11 +6,11 @@ import { grey } from "../../constants/color";
 
 const sliderSettings: Settings = {
   autoplay: false,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 3,
   initialSlide: 0,
-  dots: true,
+  swipeToSlide: true,
   centerPadding: "100px",
   responsive: [
     {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { makeStyles } from "@material-ui/styles";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { purple } from "../../constants/color";
 import { Hidden } from "@material-ui/core";
 
@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     paddingTop: 20,
     paddingBottom: 20,
     color: purple,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 40,
+    paddingRight: 40,
   },
   link: {
     "&:hover": {
@@ -51,22 +51,13 @@ const Navbar: React.FC = () => {
             <Link href={"/#"}>
               <a className={classes.link}>Mega Menu</a>
             </Link>
-            <ArrowDropDownIcon />
-          </li>
-          <li className={classes.menuItem}>
-            <Link href={"/#"}>
-              <a className={classes.link}>Shop</a>
-            </Link>
-          </li>
-          <li className={classes.menuItem}>
-            <Link href={"/#"}>
-              <a className={classes.link}>Page</a>
-            </Link>
+            <KeyboardArrowDownIcon fontSize="small" />
           </li>
           <li className={classes.menuItem}>
             <Link href={"/#"}>
               <a className={classes.link}>News</a>
             </Link>
+            <KeyboardArrowDownIcon fontSize="small" />
           </li>
           <li className={classes.menuItem}>
             <Link href={"/contact"}>
